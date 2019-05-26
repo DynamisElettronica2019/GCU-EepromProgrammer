@@ -8,6 +8,7 @@ import com.fazecast.jSerialComm.SerialPortPacketListener;
 
 public class Receiver {
 	private Parser parser;
+	private Data data;
 	private char[] strRead; // Where read data are saved
 	private SerialPort comPort; // Com port object, null when closed
 	private int baudRate;
@@ -22,7 +23,10 @@ public class Receiver {
 	/*
 	 * Constructor. Selezionare modalità car ("C") o lap ("L"). La modalità L non ha il command sender
 	 */
-	public Receiver() {
+	public Receiver(Data data, Parser parser) {
+		this.data = data;
+		this.parser = parser;
+		
 		strRead = new char[50];
 		strIndex = 0;
 		startIndex = -1;
@@ -98,6 +102,7 @@ public class Receiver {
 				e.printStackTrace();
 			}
 		}
+		
 		
 		/*
 		 * Create receiver on new thread, currently retrying to connect every 2 seconds

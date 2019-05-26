@@ -13,12 +13,13 @@ import back_end.parsed.ParsedPage7;
 
 public class Parser {
 	private ArrayList<Character> pageIdentifier = new ArrayList<Character>(); // For future use
+	private Data data;
 	
 	/*
 	 * Set class attributes
 	 */
-	public Parser() {
-		
+	public Parser(Data data) {
+		this.data = data;
 		/*
 		 * Set gearshift pages
 		 */
