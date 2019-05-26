@@ -7,6 +7,7 @@ import com.fazecast.jSerialComm.SerialPortEvent;
 import com.fazecast.jSerialComm.SerialPortPacketListener;
 
 public class Receiver {
+	private Parser parser;
 	private char[] strRead; // Where read data are saved
 	private SerialPort comPort; // Com port object, null when closed
 	private int baudRate;
@@ -137,7 +138,7 @@ public class Receiver {
 			strIndex = 0;
 			startIndex = -1;
 			closeIndex = -1;
-			//parser.decodeString(strToSend); // Call parser
+			parser.parseString(strToSend); // Pass string to parse to parser
 		}
 	}
 }
