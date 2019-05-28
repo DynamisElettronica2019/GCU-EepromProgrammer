@@ -19,8 +19,30 @@ public class Data {
 	public Data(ArrayList<View> myViews) {
 		gearshift = new Gearshift(myViews);
 		acceleration = new Acceleration(myViews);
+		
+		ViewLoader vl = new ViewLoader(this);
+		for(View v : myViews) v.setViewLoader(vl);
 	}
 	
+	/*
+	 * Gear and acceleration getter and setter
+	 */
+	public Gearshift getGearshift() {
+		return gearshift;
+	}
+
+	public void setGearshift(Gearshift gearshift) {
+		this.gearshift = gearshift;
+	}
+
+	public Acceleration getAcceleration() {
+		return acceleration;
+	}
+
+	public void setAcceleration(Acceleration acceleration) {
+		this.acceleration = acceleration;
+	}
+
 	/*
 	 * Every parsed page has its own update method for storing data in gear/accel class
 	 */

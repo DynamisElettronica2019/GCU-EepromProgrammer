@@ -26,7 +26,7 @@ public abstract class View {
 		this.commandSender = commandSender;
 	}
 	
-	public void setViewLoader(ViewLoader viewLoader) throws IOException {
+	public void setViewLoader(ViewLoader viewLoader) {
 		this.viewLoader = viewLoader;
 	}
 	
