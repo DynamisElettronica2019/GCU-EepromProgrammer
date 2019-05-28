@@ -2,6 +2,8 @@ package back_end;
 
 import java.util.ArrayList;
 
+import back_end.sender.SenderPage1;
+import configuration.Channels;
 import front_end.View;
 
 public class CommandSender {
@@ -25,5 +27,13 @@ public class CommandSender {
 	 */
 	public void sendCommand(String comm) {
 		receiver.send(comm);
+	}
+	
+	/*
+	 * Send acceleration page
+	 */
+	public void sendNewDataPage1() {
+		SenderPage1 sender = new SenderPage1(receiver);
+		sender.Send(data.getGearshift());
 	}
 }

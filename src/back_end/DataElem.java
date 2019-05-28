@@ -44,6 +44,14 @@ public class DataElem extends Observable{
 			notifyObservers();
 		}
 	}
+	
+	public ArrayList<String> GetPageStrings(int firstIndex, int lastIndex) {
+		ArrayList<String> pageStrings = new ArrayList<String>();
+		for (int i=firstIndex; i<lastIndex; i++) {
+			pageStrings.add(elementValues.get(i));
+		}
+		return pageStrings;
+	}
 
 	/*
 	 * Notify view

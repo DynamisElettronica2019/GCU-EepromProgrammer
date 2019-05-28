@@ -10,5 +10,5 @@ public abstract class Sender {
 		this.receiver = rec;
 	}
 	
-	public abstract void Send(DataElem element, Integer page);
+	public abstract void Send(DataElem element);
 }
