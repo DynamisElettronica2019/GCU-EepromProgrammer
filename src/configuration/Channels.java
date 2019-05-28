@@ -105,6 +105,13 @@ public class Channels {
 	public static final int PAGE7_INDEX_START = PAGE6_INDEX_END + 1;
 	public static final int PAGE7_INDEX_END = PAGE7_INDEX_START + PAGE7_SIZE;
 	
+	/*
+	 * Type sizes
+	 */
+	
+	public static final int GEARSHIFT_SIZE = PAGE1_SIZE + PAGE2_SIZE + PAGE3_SIZE + PAGE4_SIZE;
+	public static final int ACCELERATION_SIZE = PAGE5_SIZE + PAGE6_SIZE + PAGE7_SIZE;
+	
 	
 	public Channels() {
 		/*

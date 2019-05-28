@@ -9,19 +9,21 @@ import back_end.parsed.Parsed;
 import front_end.View;
 
 public class DataElem extends Observable{
-	protected String[] elementValues;
-	protected String[] elementNames;
-	protected Boolean[] elementIsUpdated;
-	protected Map<String, Integer> elementMap = new HashMap<>();
+	protected ArrayList<String> elementValues;
+	protected ArrayList<String> elementNames;
+	protected ArrayList<Boolean> elementIsUpdated;
+	protected Map<String, Integer> elementMap = new HashMap<>(); // Map name to element index
 	
 	public DataElem(ArrayList<View> myViews) {
-		//TODO
+		elementValues = new ArrayList<String>();
+		elementNames = new ArrayList<String>();
+		elementIsUpdated = new ArrayList<Boolean>();
 	}
 	
 	public void UpdatePage(Parsed newData) {
 		for(String name : newData.getParsedName()) {
-			elementValues[elementMap.get(name)] = newData.getParsed().get(newData.getParsedMap().get(name));
-			elementIsUpdated[elementMap.get(name)] = true;
+			elementValues.set(elementMap.get(name), newData.getParsed().get(newData.getParsedMap().get(name)));
+			elementIsUpdated.set(elementMap.get(name), true);
 		}
 	}
 
