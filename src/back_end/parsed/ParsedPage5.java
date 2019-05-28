@@ -1,5 +1,7 @@
 package back_end.parsed;
 
+import configuration.Channels;
+
 public class ParsedPage5 extends Parsed {
 	private final int RAMP_START_START = 0;
 	private final int RAMP_START_END = 1;
@@ -28,13 +30,29 @@ public class ParsedPage5 extends Parsed {
 		 * Substrings creation
 		 */
 		parsed.add(string.substring(RAMP_START_START, RAMP_START_END));
+		parsedName.add(Channels.RAMP_START_NAME);
+		parsedMap.put(Channels.RAMP_START_NAME, 0);
 		parsed.add(string.substring(RAMP_END_START, RAMP_END_END));
+		parsedName.add(Channels.RAMP_END_NAME);
+		parsedMap.put(Channels.RAMP_END_NAME, 0);
 		parsed.add(string.substring(RAMP_TIME_START, RAMP_TIME_END));
+		parsedName.add(Channels.RAMP_TIME_NAME);
+		parsedMap.put(Channels.RAMP_TIME_NAME, 0);
 		parsed.add(string.substring(RPM_LIMIT_1_2_START, RPM_LIMIT_1_2_END));
+		parsedName.add(Channels.RPM_LIMIT_1_2_NAME);
+		parsedMap.put(Channels.RPM_LIMIT_1_2_NAME, 0);
 		parsed.add(string.substring(RPM_LIMIT_2_3_START, RPM_LIMIT_2_3_END));
+		parsedName.add(Channels.RPM_LIMIT_2_3_NAME);
+		parsedMap.put(Channels.RPM_LIMIT_2_3_NAME, 0);
 		parsed.add(string.substring(RPM_LIMIT_3_4_START, RPM_LIMIT_3_4_END));
+		parsedName.add(Channels.RPM_LIMIT_3_4_NAME);
+		parsedMap.put(Channels.RPM_LIMIT_3_4_NAME, 0);
 		parsed.add(string.substring(RPM_LIMIT_4_5_START, RPM_LIMIT_4_5_END));
+		parsedName.add(Channels.RPM_LIMIT_4_5_NAME);
+		parsedMap.put(Channels.RPM_LIMIT_4_5_NAME, 0);
 		parsed.add(string.substring(SPEED_LIMIT_1_2_START, SPEED_LIMIT_1_2_END));
+		parsedName.add(Channels.SPEED_LIMIT_1_2_NAME);
+		parsedMap.put(Channels.SPEED_LIMIT_1_2_NAME, 0);
 	}
 
 }
