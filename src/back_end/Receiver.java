@@ -11,7 +11,6 @@ import front_end.View;
 
 public class Receiver {
 	private Parser parser;
-	private Data data;
 	private char[] strRead; // Where read data are saved
 	private SerialPort comPort; // Com port object, null when closed
 	private int baudRate;
@@ -27,7 +26,7 @@ public class Receiver {
 	 * Constructor. Selezionare modalità car ("C") o lap ("L"). La modalità L non ha il command sender
 	 */
 	public Receiver(Data data, Parser parser, ArrayList<View> myViews) {
-		this.data = data;
+		//this.data = data;
 		this.parser = parser;
 		
 		strRead = new char[50];
