@@ -12,6 +12,7 @@ abstract public class Parsed {
 	
 	public Parsed(char messageType) {
 		this.messageType = messageType;
+		parsed = new ArrayList<String>(); // String init
 	}
 	
 	abstract public void splitString(String string);

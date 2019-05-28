@@ -18,7 +18,6 @@ public class ParsedPage0 extends Parsed {
 
 	@Override
 	public void splitString(String string) {
-		parsed = new ArrayList<String>(); // String init
 		/*
 		 * Substrings creation
 		 */
