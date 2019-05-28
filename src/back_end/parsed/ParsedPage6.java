@@ -1,5 +1,7 @@
 package back_end.parsed;
 
+import configuration.Channels;
+
 public class ParsedPage6 extends Parsed {
 	private final int SPEED_LIMIT_2_3_START = 0;
 	private final int SPEED_LIMIT_2_3_END = 1;
@@ -20,9 +22,17 @@ public class ParsedPage6 extends Parsed {
 		 * Substrings creation
 		 */
 		parsed.add(string.substring(SPEED_LIMIT_2_3_START, SPEED_LIMIT_2_3_END));
+		parsedName.add(Channels.SPEED_LIMIT_2_3_NAME);
+		parsedMap.put(Channels.SPEED_LIMIT_2_3_NAME, 0);
 		parsed.add(string.substring(SPEED_LIMIT_3_4_START, SPEED_LIMIT_3_4_END));
+		parsedName.add(Channels.SPEED_LIMIT_3_4_NAME);
+		parsedMap.put(Channels.SPEED_LIMIT_3_4_NAME, 0);
 		parsed.add(string.substring(SPEED_LIMIT_4_5_START, SPEED_LIMIT_4_5_END));
+		parsedName.add(Channels.SPEED_LIMIT_4_5_NAME);
+		parsedMap.put(Channels.SPEED_LIMIT_4_5_NAME, 0);
 		parsed.add(string.substring(TPS_START_LIMIT_START, TPS_START_LIMIT_END));
+		parsedName.add(Channels.TPS_START_LIMIT_NAME);
+		parsedMap.put(Channels.TPS_START_LIMIT_NAME, 0);
 	}
 
 }
