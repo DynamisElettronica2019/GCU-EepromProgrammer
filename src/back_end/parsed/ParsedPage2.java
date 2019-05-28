@@ -34,25 +34,25 @@ public class ParsedPage2 extends Parsed {
 		parsedMap.put(Channels.DN_PUSH_NAME, 0);
 		parsed.add(string.substring(CLUTCH_START, CLUTCH_END));
 		parsedName.add(Channels.CLUTCH_NAME);
-		parsedMap.put(Channels.CLUTCH_NAME, 0);
+		parsedMap.put(Channels.CLUTCH_NAME, 1);
 		parsed.add(string.substring(DN_REBOUND_START, DN_REBOUND_END));
 		parsedName.add(Channels.DN_REBOUND_NAME);
-		parsedMap.put(Channels.DN_REBOUND_NAME, 0);
+		parsedMap.put(Channels.DN_REBOUND_NAME, 2);
 		parsed.add(string.substring(DN_BRAKE_START, DN_BRAKE_END));
 		parsedName.add(Channels.DN_BRAKE_NAME);
-		parsedMap.put(Channels.DN_BRAKE_NAME, 0);
+		parsedMap.put(Channels.DN_BRAKE_NAME, 3);
 		parsed.add(string.substring(UP_PUSH_1_2_START, UP_PUSH_1_2_END));
 		parsedName.add(Channels.UP_PUSH_1_2_NAME);
-		parsedMap.put(Channels.UP_PUSH_1_2_NAME, 0);
+		parsedMap.put(Channels.UP_PUSH_1_2_NAME, 4);
 		parsed.add(string.substring(UP_PUSH_2_3_START, UP_PUSH_2_3_END));
 		parsedName.add(Channels.UP_PUSH_2_3_NAME);
-		parsedMap.put(Channels.UP_PUSH_2_3_NAME, 0);
+		parsedMap.put(Channels.UP_PUSH_2_3_NAME, 5);
 		parsed.add(string.substring(UP_PUSH_3_4_START, UP_PUSH_3_4_END));
 		parsedName.add(Channels.UP_PUSH_3_4_NAME);
-		parsedMap.put(Channels.UP_PUSH_3_4_NAME, 0);
+		parsedMap.put(Channels.UP_PUSH_3_4_NAME, 6);
 		parsed.add(string.substring(UP_PUSH_4_5_START, UP_PUSH_4_5_END));
 		parsedName.add(Channels.UP_PUSH_4_5_NAME);
-		parsedMap.put(Channels.UP_PUSH_4_5_NAME, 0);
+		parsedMap.put(Channels.UP_PUSH_4_5_NAME, 7);
 	}
 
 }
