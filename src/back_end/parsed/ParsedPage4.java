@@ -10,7 +10,6 @@ public class ParsedPage4 extends Parsed {
 	@Override
 	public void splitString(String string) {
 		// TODO Auto-generated method stub
-
 	}
 
 }

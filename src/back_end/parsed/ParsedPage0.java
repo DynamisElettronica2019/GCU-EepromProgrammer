@@ -1,7 +1,5 @@
 package back_end.parsed;
 
-import java.util.ArrayList;
-
 public class ParsedPage0 extends Parsed {
 	private final int EEPROM_STATE_START = 0;
 	private final int EEPROM_STATE_END = 0;
