@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
 
+import back_end.parsed.Parsed;
 import front_end.View;
 
 public class DataElem extends Observable{
@@ -15,6 +16,13 @@ public class DataElem extends Observable{
 	
 	public DataElem(ArrayList<View> myViews) {
 		//TODO
+	}
+	
+	public void UpdatePage(Parsed newData) {
+		for(String name : newData.getParsedName()) {
+			elementValues[elementMap.get(name)] = newData.getParsed().get(newData.getParsedMap().get(name));
+			elementIsUpdated[elementMap.get(name)] = true;
+		}
 	}
 
 	/*

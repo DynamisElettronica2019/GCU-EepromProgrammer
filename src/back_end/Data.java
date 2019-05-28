@@ -25,34 +25,34 @@ public class Data {
 	 * Every parsed page has its own update method for storing data in gear/accel class
 	 */
 	public void update(ParsedPage0 parsed) {
-		
+		gearshift.UpdatePage(parsed);
 	}
 	
 	public void update(ParsedPage1 parsed) {
-		
+		gearshift.UpdatePage(parsed);
 	}
 	
 	public void update(ParsedPage2 parsed) {
-	
+		gearshift.UpdatePage(parsed);
 	}
 	
 	public void update(ParsedPage3 parsed) {
-		
+		gearshift.UpdatePage(parsed);
 	}
 	
 	public void update(ParsedPage4 parsed) {
-		
+		gearshift.UpdatePage(parsed);
 	}
 
 	public void update(ParsedPage5 parsed) {
-	
+		acceleration.UpdatePage(parsed);
 	}
 	
 	public void update(ParsedPage6 parsed) {
-		
+		acceleration.UpdatePage(parsed);
 	}
 	
 	public void update(ParsedPage7 parsed) {
-		
+		acceleration.UpdatePage(parsed);
 	}
 }
