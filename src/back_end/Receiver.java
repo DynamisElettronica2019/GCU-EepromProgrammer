@@ -102,48 +102,48 @@ public class Receiver {
 				e.printStackTrace();
 			}
 		}
+	}
 		
 		
-		/*
-		 * Create receiver on new thread, currently retrying to connect every 2 seconds
-		 * Need to manage connection/disconnection?
-		 * Eventually use function comPort.closePort()
-		 */
-		public void Reader() {
-			comPort = SerialPort.getCommPort(portName);
-			Thread portListener = new Thread(new Runnable() {
-				@Override
-				public void run() {
-					while(true){
-						if((comPort.isOpen() == false)) {
-							comPort.openPort(); //Open port
-							if((comPort.isOpen() == true)) {
-								System.out.println("Connected on "+portName);
-							}
-						}
-						try {
-							TimeUnit.SECONDS.sleep(2); //Wait
-						} catch (InterruptedException e) {
-							e.printStackTrace();
+	/*
+	 * Create receiver on new thread, currently retrying to connect every 2 seconds
+	 * Need to manage connection/disconnection?
+	 * Eventually use function comPort.closePort()
+	 */
+	public void Reader() {
+		comPort = SerialPort.getCommPort(portName);
+		Thread portListener = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while(true){
+					if((comPort.isOpen() == false)) {
+						comPort.openPort(); //Open port
+						if((comPort.isOpen() == true)) {
+							System.out.println("Connected on "+portName);
 						}
 					}
+					try {
+						TimeUnit.SECONDS.sleep(2); //Wait
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
-			});
-			portListener.start();
-			comPort.setBaudRate(baudRate);
-			PacketListener listener = new PacketListener();
-			comPort.addDataListener(listener);
-		}
-		
-		/*
-		 * Create string to pass to parser, without "epr"
-		 */
-		private void createString() {
-			strToSend = String.valueOf(strRead, startIndex, closeIndex);
-			strIndex = 0;
-			startIndex = -1;
-			closeIndex = -1;
-			parser.parseString(strToSend); // Pass string to parse to parser
-		}
+			}
+		});
+		portListener.start();
+		comPort.setBaudRate(baudRate);
+		PacketListener listener = new PacketListener();
+		comPort.addDataListener(listener);
+	}
+	
+	/*
+	 * Create string to pass to parser, without "epr"
+	 */
+	private void createString() {
+		strToSend = String.valueOf(strRead, startIndex, closeIndex);
+		strIndex = 0;
+		startIndex = -1;
+		closeIndex = -1;
+		parser.parseString(strToSend); // Pass string to parse to parser
 	}
 }
