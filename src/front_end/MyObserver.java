@@ -1,6 +1,8 @@
 package front_end;
 
-public class MyObserver {
+import java.util.Observer;
+
+public abstract class MyObserver implements Observer{
 	protected View myView;
 	
 	public MyObserver(View myView) {

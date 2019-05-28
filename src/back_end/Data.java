@@ -1,5 +1,7 @@
 package back_end;
 
+import java.util.ArrayList;
+
 import back_end.parsed.ParsedPage0;
 import back_end.parsed.ParsedPage1;
 import back_end.parsed.ParsedPage2;
@@ -8,14 +10,15 @@ import back_end.parsed.ParsedPage4;
 import back_end.parsed.ParsedPage5;
 import back_end.parsed.ParsedPage6;
 import back_end.parsed.ParsedPage7;
+import front_end.View;
 
 public class Data {
 	private Gearshift gearshift;
 	private Acceleration acceleration;
 	
-	public Data() {
-		gearshift = new Gearshift();
-		acceleration = new Acceleration();
+	public Data(ArrayList<View> myViews) {
+		gearshift = new Gearshift(myViews);
+		acceleration = new Acceleration(myViews);
 	}
 	
 	/*

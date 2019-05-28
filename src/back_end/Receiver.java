@@ -1,10 +1,13 @@
 package back_end;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortEvent;
 import com.fazecast.jSerialComm.SerialPortPacketListener;
+
+import front_end.View;
 
 public class Receiver {
 	private Parser parser;
@@ -23,7 +26,7 @@ public class Receiver {
 	/*
 	 * Constructor. Selezionare modalità car ("C") o lap ("L"). La modalità L non ha il command sender
 	 */
-	public Receiver(Data data, Parser parser) {
+	public Receiver(Data data, Parser parser, ArrayList<View> myViews) {
 		this.data = data;
 		this.parser = parser;
 		
