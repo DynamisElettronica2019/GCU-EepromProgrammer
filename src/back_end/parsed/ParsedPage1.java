@@ -1,5 +1,7 @@
 package back_end.parsed;
 
+import configuration.Channels;
+
 public class ParsedPage1 extends Parsed {
 	private final int NT_PUSH_1_N_START = 0;
 	private final int NT_PUSH_1_N_END = 1;
@@ -17,18 +19,6 @@ public class ParsedPage1 extends Parsed {
 	private final int NT_REBOUND_2_N_END = 13;
 	private final int NT_BRAKE_2_N_START = 14;
 	private final int NT_BRAKE_2_N_END = 15;
-	
-	/*
-	 * Channel names
-	 */
-	private final String NT_PUSH_1_N_NAME = "NT_PUSH_1_N";
-	private final String NT_CLUTCH_1_N_NAME = "NT_CLUTCH_1_N";
-	private final String NT_REBOUND_1_N_NAME = "NT_REBOUND_1_N";
-	private final String NT_BRAKE_1_N_NAME = "NT_BRAKE_1_N";
-	private final String NT_PUSH_2_N_NAME = "NT_PUSH_2_N";
-	private final String NT_CLUTCH_2_N_NAME = "NT_CLUTCH_2_N";
-	private final String NT_REBOUND_2_N_NAME = "NT_REBOUND_2_N";
-	private final String NT_BRAKE_2_N_NAME = "NT_BRAKE_2_N";
 
 	public ParsedPage1(char messageType) {
 		super(messageType);
@@ -40,29 +30,29 @@ public class ParsedPage1 extends Parsed {
 		 * Substrings creation
 		 */
 		parsed.add(string.substring(NT_PUSH_1_N_START, NT_PUSH_1_N_END));
-		parsedName.add(NT_PUSH_1_N_NAME);
-		parsedMap.put(NT_PUSH_1_N_NAME, 0);
+		parsedName.add(Channels.NT_PUSH_1_N_NAME);
+		parsedMap.put(Channels.NT_PUSH_1_N_NAME, 0);
 		parsed.add(string.substring(NT_CLUTCH_1_N_START, NT_CLUTCH_1_N_END));
-		parsedName.add(NT_CLUTCH_1_N_NAME);
-		parsedMap.put(NT_CLUTCH_1_N_NAME, 1);
+		parsedName.add(Channels.NT_CLUTCH_1_N_NAME);
+		parsedMap.put(Channels.NT_CLUTCH_1_N_NAME, 1);
 		parsed.add(string.substring(NT_REBOUND_1_N_START, NT_REBOUND_1_N_END));
-		parsedName.add(NT_REBOUND_1_N_NAME);
-		parsedMap.put(NT_REBOUND_1_N_NAME, 2);
+		parsedName.add(Channels.NT_REBOUND_1_N_NAME);
+		parsedMap.put(Channels.NT_REBOUND_1_N_NAME, 2);
 		parsed.add(string.substring(NT_BRAKE_1_N_START, NT_BRAKE_1_N_END));
-		parsedName.add(NT_BRAKE_1_N_NAME);
-		parsedMap.put(NT_BRAKE_1_N_NAME, 3);
+		parsedName.add(Channels.NT_BRAKE_1_N_NAME);
+		parsedMap.put(Channels.NT_BRAKE_1_N_NAME, 3);
 		parsed.add(string.substring(NT_PUSH_2_N_START, NT_PUSH_2_N_END));
-		parsedName.add(NT_PUSH_2_N_NAME);
-		parsedMap.put(NT_PUSH_2_N_NAME, 4);
+		parsedName.add(Channels.NT_PUSH_2_N_NAME);
+		parsedMap.put(Channels.NT_PUSH_2_N_NAME, 4);
 		parsed.add(string.substring(NT_CLUTCH_2_N_START, NT_CLUTCH_2_N_END));
-		parsedName.add(NT_CLUTCH_2_N_NAME);
-		parsedMap.put(NT_CLUTCH_2_N_NAME, 5);
+		parsedName.add(Channels.NT_CLUTCH_2_N_NAME);
+		parsedMap.put(Channels.NT_CLUTCH_2_N_NAME, 5);
 		parsed.add(string.substring(NT_REBOUND_2_N_START, NT_REBOUND_2_N_END));
-		parsedName.add(NT_REBOUND_2_N_NAME);
-		parsedMap.put(NT_REBOUND_2_N_NAME, 6);
+		parsedName.add(Channels.NT_REBOUND_2_N_NAME);
+		parsedMap.put(Channels.NT_REBOUND_2_N_NAME, 6);
 		parsed.add(string.substring(NT_BRAKE_2_N_START, NT_BRAKE_2_N_END));
-		parsedName.add(NT_BRAKE_2_N_NAME);
-		parsedMap.put(NT_BRAKE_2_N_NAME, 7);
+		parsedName.add(Channels.NT_BRAKE_2_N_NAME);
+		parsedMap.put(Channels.NT_BRAKE_2_N_NAME, 7);
 	}
 
 }
