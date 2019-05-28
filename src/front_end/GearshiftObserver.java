@@ -2,7 +2,6 @@ package front_end;
 
 import java.util.Observable;
 
-import back_end.Acceleration;
 import back_end.Gearshift;
 
 public class GearshiftObserver extends MyObserver {
