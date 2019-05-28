@@ -46,34 +46,42 @@ public class Parser {
 		case '0':
 			ParsedPage0 parsed0 = new ParsedPage0('0');
 			parsed0.splitString(stringToParse);
+			data.update(parsed0);
 			break;
 		case '1':
 			ParsedPage1 parsed1 = new ParsedPage1('1');
 			parsed1.splitString(stringToParse);
+			data.update(parsed1);
 			break;
 		case '2':
 			ParsedPage2 parsed2 = new ParsedPage2('2');
 			parsed2.splitString(stringToParse);
+			data.update(parsed2);
 			break;
 		case '3':
 			ParsedPage3 parsed3 = new ParsedPage3('3');
 			parsed3.splitString(stringToParse);
+			data.update(parsed3);
 			break;
 		case '4':
 			ParsedPage4 parsed4 = new ParsedPage4('4');
 			parsed4.splitString(stringToParse);
+			data.update(parsed4);
 			break;
 		case '5':
 			ParsedPage5 parsed5 = new ParsedPage5('5');
 			parsed5.splitString(stringToParse);
+			data.update(parsed5);
 			break;
 		case '6':
 			ParsedPage6 parsed6 = new ParsedPage6('6');
 			parsed6.splitString(stringToParse);
+			data.update(parsed6);
 			break;
 		case '7':
 			ParsedPage7 parsed7 = new ParsedPage7('7');
 			parsed7.splitString(stringToParse);
+			data.update(parsed7);
 			break;
 		default:
 			System.out.println("First letter reading error");
