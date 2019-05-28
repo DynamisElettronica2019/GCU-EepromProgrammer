@@ -89,21 +89,21 @@ public class Channels {
 	public static final int PAGE7_SIZE = 0;
 	
 	public static final int PAGE0_INDEX_START = 0;
-	public static final int PAGE0_INDEX_END = PAGE0_INDEX_START + PAGE0_SIZE;
+	public static final int PAGE0_INDEX_END = PAGE0_INDEX_START + PAGE0_SIZE - 1;
 	public static final int PAGE1_INDEX_START = PAGE0_INDEX_END + 1;
-	public static final int PAGE1_INDEX_END = PAGE1_INDEX_START + PAGE1_SIZE;
+	public static final int PAGE1_INDEX_END = PAGE1_INDEX_START + PAGE1_SIZE - 1;
 	public static final int PAGE2_INDEX_START = PAGE1_INDEX_END + 1;
-	public static final int PAGE2_INDEX_END = PAGE2_INDEX_START + PAGE2_SIZE;
+	public static final int PAGE2_INDEX_END = PAGE2_INDEX_START + PAGE2_SIZE - 1;
 	public static final int PAGE3_INDEX_START = PAGE2_INDEX_END + 1;
-	public static final int PAGE3_INDEX_END = PAGE3_INDEX_START + PAGE3_SIZE;
+	public static final int PAGE3_INDEX_END = PAGE3_INDEX_START + PAGE3_SIZE - 1;
 	public static final int PAGE4_INDEX_START = PAGE3_INDEX_END + 1;
-	public static final int PAGE4_INDEX_END = PAGE4_INDEX_START + PAGE4_SIZE;
+	public static final int PAGE4_INDEX_END = PAGE4_INDEX_START + PAGE4_SIZE - 1;
 	public static final int PAGE5_INDEX_START = PAGE4_INDEX_END + 1;
-	public static final int PAGE5_INDEX_END = PAGE5_INDEX_START + PAGE5_SIZE;
+	public static final int PAGE5_INDEX_END = PAGE5_INDEX_START + PAGE5_SIZE - 1;
 	public static final int PAGE6_INDEX_START = PAGE5_INDEX_END + 1;
-	public static final int PAGE6_INDEX_END = PAGE6_INDEX_START + PAGE6_SIZE;
+	public static final int PAGE6_INDEX_END = PAGE6_INDEX_START + PAGE6_SIZE - 1;
 	public static final int PAGE7_INDEX_START = PAGE6_INDEX_END + 1;
-	public static final int PAGE7_INDEX_END = PAGE7_INDEX_START + PAGE7_SIZE;
+	public static final int PAGE7_INDEX_END = PAGE7_INDEX_START + PAGE7_SIZE - 1;
 	
 	/*
 	 * Type sizes

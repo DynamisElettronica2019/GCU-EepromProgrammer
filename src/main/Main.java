@@ -5,12 +5,19 @@ import java.util.ArrayList;
 import back_end.Data;
 import back_end.Parser;
 import back_end.Receiver;
+import configuration.Channels;
 import front_end.View;
 import front_end.gui.GuiView;
 
 public class Main {
 
 	public static void main(String[] args) {
+		/*
+		 * Init channels
+		 */
+		Channels config = new Channels();
+		
+
 		/*
 		 * Create view
 		 */
