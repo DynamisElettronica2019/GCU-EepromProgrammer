@@ -8,45 +8,45 @@ public class Channels {
 	/*
 	 * Page 0 channel names
 	 */
-	private static final String EEPROM_STATE_NAME = "EEPROM_STATE";
-	private static final String EEPROM_LAST_COM_NAME = "EEPROM_LAST_COM";
-	private static final String EEPROM_READ_COUNTER_NAME = "EEPROM_READ_COUNTER";
-	private static final String EEPROM_WRITE_COUNTER_NAME = "EEPROM_WRITE_COUNTER";
+	public static final String EEPROM_STATE_NAME = "EEPROM_STATE";
+	public static final String EEPROM_LAST_COM_NAME = "EEPROM_LAST_COM";
+	public static final String EEPROM_READ_COUNTER_NAME = "EEPROM_READ_COUNTER";
+	public static final String EEPROM_WRITE_COUNTER_NAME = "EEPROM_WRITE_COUNTER";
 	
 	/*
 	 * Page 1 channel names
 	 */
-	private static final String NT_PUSH_1_N_NAME = "NT_PUSH_1_N";
-	private static final String NT_CLUTCH_1_N_NAME = "NT_CLUTCH_1_N";
-	private static final String NT_REBOUND_1_N_NAME = "NT_REBOUND_1_N";
-	private static final String NT_BRAKE_1_N_NAME = "NT_BRAKE_1_N";
-	private static final String NT_PUSH_2_N_NAME = "NT_PUSH_2_N";
-	private static final String NT_CLUTCH_2_N_NAME = "NT_CLUTCH_2_N";
-	private static final String NT_REBOUND_2_N_NAME = "NT_REBOUND_2_N";
-	private static final String NT_BRAKE_2_N_NAME = "NT_BRAKE_2_N";
+	public static final String NT_PUSH_1_N_NAME = "NT_PUSH_1_N";
+	public static final String NT_CLUTCH_1_N_NAME = "NT_CLUTCH_1_N";
+	public static final String NT_REBOUND_1_N_NAME = "NT_REBOUND_1_N";
+	public static final String NT_BRAKE_1_N_NAME = "NT_BRAKE_1_N";
+	public static final String NT_PUSH_2_N_NAME = "NT_PUSH_2_N";
+	public static final String NT_CLUTCH_2_N_NAME = "NT_CLUTCH_2_N";
+	public static final String NT_REBOUND_2_N_NAME = "NT_REBOUND_2_N";
+	public static final String NT_BRAKE_2_N_NAME = "NT_BRAKE_2_N";
 	
 	/*
 	 * Page 2 channel names
 	 */
-	private static final String DN_PUSH_NAME = "DN_PUSH";
-	private static final String CLUTCH_NAME = "CLUTCH";
-	private static final String DN_REBOUND_NAME = "DN_REBOUND";
-	private static final String DN_BRAKE_NAME = "DN_BRAKE";
-	private static final String UP_PUSH_1_2_NAME = "UP_PUSH_1_2";
-	private static final String UP_PUSH_2_3_NAME = "UP_PUSH_2_3";
-	private static final String UP_PUSH_3_4_NAME = "UP_PUSH_3_4";
-	private static final String UP_PUSH_4_5_NAME = "UP_PUSH_4_5";
+	public static final String DN_PUSH_NAME = "DN_PUSH";
+	public static final String CLUTCH_NAME = "CLUTCH";
+	public static final String DN_REBOUND_NAME = "DN_REBOUND";
+	public static final String DN_BRAKE_NAME = "DN_BRAKE";
+	public static final String UP_PUSH_1_2_NAME = "UP_PUSH_1_2";
+	public static final String UP_PUSH_2_3_NAME = "UP_PUSH_2_3";
+	public static final String UP_PUSH_3_4_NAME = "UP_PUSH_3_4";
+	public static final String UP_PUSH_4_5_NAME = "UP_PUSH_4_5";
 	
 	/*
 	 * Page 3 channel names
 	 */
-	private static final String DELAY_NAME = "DELAY";
-	private static final String UP_REBOUND_NAME = "UP_REBOUND";
-	private static final String UP_BRAKE_NAME = "UP_BRAKE";
-	private static final String NT_CLUTCH_DELAY_NAME = "NT_CLUTCH_DELAY";
-	private static final String DOWN_TIME_CHECK_NAME = "DOWN_TIME_CHECK";
-	private static final String UP_TIME_CHECK_NAME = "UP_TIME_CHECK";
-	private static final String MAX_TRIES_NAME = "MAX_TRIES";
+	public static final String DELAY_NAME = "DELAY";
+	public static final String UP_REBOUND_NAME = "UP_REBOUND";
+	public static final String UP_BRAKE_NAME = "UP_BRAKE";
+	public static final String NT_CLUTCH_DELAY_NAME = "NT_CLUTCH_DELAY";
+	public static final String DOWN_TIME_CHECK_NAME = "DOWN_TIME_CHECK";
+	public static final String UP_TIME_CHECK_NAME = "UP_TIME_CHECK";
+	public static final String MAX_TRIES_NAME = "MAX_TRIES";
 	
 	/*
 	 * Page 4 channel names
@@ -55,22 +55,22 @@ public class Channels {
 	/*
 	 * Page 5 channel names
 	 */
-	private static final String RAMP_START_NAME = "RAMP_START";
-	private static final String RAMP_END_NAME = "RAMP_END";
-	private static final String RAMP_TIME_NAME = "RAMP_TIME";
-	private static final String RPM_LIMIT_1_2_NAME = "RPM_LIMIT_1_2";
-	private static final String RPM_LIMIT_2_3_NAME = "RPM_LIMIT_2_3";
-	private static final String RPM_LIMIT_3_4_NAME = "RPM_LIMIT_3_4";
-	private static final String RPM_LIMIT_4_5_NAME = "RPM_LIMIT_4_5";
-	private static final String SPEED_LIMIT_1_2_NAME = "SPEED_LIMIT_1_2";
+	public static final String RAMP_START_NAME = "RAMP_START";
+	public static final String RAMP_END_NAME = "RAMP_END";
+	public static final String RAMP_TIME_NAME = "RAMP_TIME";
+	public static final String RPM_LIMIT_1_2_NAME = "RPM_LIMIT_1_2";
+	public static final String RPM_LIMIT_2_3_NAME = "RPM_LIMIT_2_3";
+	public static final String RPM_LIMIT_3_4_NAME = "RPM_LIMIT_3_4";
+	public static final String RPM_LIMIT_4_5_NAME = "RPM_LIMIT_4_5";
+	public static final String SPEED_LIMIT_1_2_NAME = "SPEED_LIMIT_1_2";
 	
 	/*
 	 * Page 6 channel names
 	 */
-	private static final String SPEED_LIMIT_2_3_NAME = "SPEED_LIMIT_2_3";
-	private static final String SPEED_LIMIT_3_4_NAME = "SPEED_LIMIT_3_4";
-	private static final String SPEED_LIMIT_4_5_NAME = "SPEED_LIMIT_4_5";
-	private static final String TPS_START_LIMIT_NAME = "TPS_START_LIMIT";
+	public static final String SPEED_LIMIT_2_3_NAME = "SPEED_LIMIT_2_3";
+	public static final String SPEED_LIMIT_3_4_NAME = "SPEED_LIMIT_3_4";
+	public static final String SPEED_LIMIT_4_5_NAME = "SPEED_LIMIT_4_5";
+	public static final String TPS_START_LIMIT_NAME = "TPS_START_LIMIT";
 	
 	/*
 	 * Page 7 channel names
