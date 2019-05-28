@@ -21,6 +21,7 @@ public class Receiver {
 	private int state; // 0 for none, 1 for 'e', 2 for 'p', 3 for 'r' receive all 19 following bytes
 	private int dataCounter;
 	private String strToSend; // String to send to parser
+	@SuppressWarnings("unused")
 	private CommandSender commandSender; // Command sender to connect frontend for sending
 	
 	/*

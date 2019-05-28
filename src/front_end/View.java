@@ -1,6 +1,5 @@
 package front_end;
 
-import java.io.IOException;
 
 import back_end.Acceleration;
 import back_end.CommandSender;

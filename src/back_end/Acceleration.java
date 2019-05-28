@@ -9,6 +9,7 @@ public class Acceleration extends DataElem {
 	
 	public Acceleration(ArrayList<View> myViews) {
 		super(myViews);
+		elementSize = Channels.ACCELERATION_SIZE;
 		
 		/*
 		 * Element names init

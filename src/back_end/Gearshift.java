@@ -9,6 +9,7 @@ public class Gearshift extends DataElem {
 	
 	public Gearshift(ArrayList<View> myViews) {
 		super(myViews);
+		elementSize = Channels.GEARSHIFT_SIZE;
 		
 		/*
 		 * Element names init

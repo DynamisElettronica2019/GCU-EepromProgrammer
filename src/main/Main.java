@@ -15,6 +15,7 @@ public class Main {
 		/*
 		 * Init channels
 		 */
+		@SuppressWarnings("unused")
 		Channels config = new Channels();
 		
 

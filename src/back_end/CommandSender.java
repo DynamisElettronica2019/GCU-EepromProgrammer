@@ -6,6 +6,7 @@ import front_end.View;
 
 public class CommandSender {
 	private Receiver receiver;
+	@SuppressWarnings("unused")
 	private Data data;
 
 	/*
