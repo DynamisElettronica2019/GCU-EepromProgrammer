@@ -21,6 +21,7 @@ public class Receiver {
 	private int state; // 0 for none, 1 for 'e', 2 for 'p', 3 for 'r' receive all 19 following bytes
 	private int dataCounter;
 	private String strToSend; // String to send to parser
+	private CommandSender commandSender; // Command sender to connect frontend for sending
 	
 	/*
 	 * Constructor. Selezionare modalità car ("C") o lap ("L"). La modalità L non ha il command sender
@@ -28,6 +29,7 @@ public class Receiver {
 	public Receiver(Data data, Parser parser, ArrayList<View> myViews) {
 		//this.data = data;
 		this.parser = parser;
+		commandSender = new CommandSender(this, data, myViews);
 		
 		strRead = new char[50];
 		strIndex = 0;
