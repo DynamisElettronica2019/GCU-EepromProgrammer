@@ -8,9 +8,13 @@ import com.fazecast.jSerialComm.SerialPort;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
 public class GuiController implements Initializable {
 	private GuiView view;
+	@FXML
+	private Circle connectionStatus;
 	@FXML
 	private ComboBox<String> comComboBox;
 
@@ -29,10 +33,12 @@ public class GuiController implements Initializable {
 	@FXML
 	private void connectClick() {
 		view.getCommandSender().openPort(comComboBox.getValue());
+		connectionStatus.setFill(Color.GREEN);
 	}
 	
 	@FXML
 	private void disconnectClick() {
 		view.getCommandSender().closePort();
+		connectionStatus.setFill(Color.RED);
 	}
 }
