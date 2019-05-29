@@ -155,4 +155,8 @@ public class Receiver {
 		closeIndex = -1;
 		parser.parseString(strToSend); // Pass string to parse to parser
 	}
+	
+	public SerialPort getComPort() {
+		return comPort;
+	}
 }

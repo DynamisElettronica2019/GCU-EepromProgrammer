@@ -2,6 +2,8 @@ package back_end;
 
 import java.util.ArrayList;
 
+import com.fazecast.jSerialComm.SerialPort;
+
 import back_end.sender.SenderPage1;
 import back_end.sender.SenderPage2;
 import back_end.sender.SenderPage3;
@@ -14,7 +16,6 @@ import front_end.View;
 
 public class CommandSender {
 	private Receiver receiver;
-	@SuppressWarnings("unused")
 	private Data data;
 
 	/*
