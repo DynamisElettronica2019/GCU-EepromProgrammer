@@ -53,7 +53,6 @@ public class Parser {
 			case '0':
 				ParsedPage0 parsed0 = new ParsedPage0('0');
 				sb.delete(Channels.HEADER_ID_START, Channels.HEADER_ID_END);
-				System.out.println(sb.toString());
 				parsed0.splitString(sb.toString());
 				data.update(parsed0);
 				break;

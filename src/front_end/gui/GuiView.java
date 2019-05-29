@@ -25,7 +25,7 @@ public class GuiView extends View {
 	private AnchorPane anchorPane;
 	
 	public GuiView() throws IOException {
-		super();
+		//super();
 		System.out.println("Starting gui view..");
 		
 		//Set stage SX

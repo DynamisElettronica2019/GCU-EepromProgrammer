@@ -10,6 +10,7 @@ public class Debug extends DataElem {
 	public Debug(ArrayList<View> myViews) {
 		super(myViews);
 		elementSize = Channels.DEBUG_SIZE;
+		for(View v: myViews) this.addObserver(v.getDebugObs());
 		
 		/*
 		 * Element names init
