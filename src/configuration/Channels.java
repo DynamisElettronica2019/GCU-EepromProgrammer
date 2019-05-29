@@ -29,7 +29,7 @@ public class Channels {
 	 */
 	public static final byte DATA_SIZE = 16;
 	public static final int HEADER_ID_START = 0;
-	public static final int HEADER_ID_END = 1;
+	public static final int HEADER_ID_END = 3;
 	
 	/*
 	 * Page 0 channel names

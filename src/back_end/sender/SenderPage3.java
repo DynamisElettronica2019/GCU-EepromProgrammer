@@ -19,6 +19,8 @@ public class SenderPage3 extends Sender {
 		StringBuilder strToSend = new StringBuilder();
 		strToSend.append(Channels.WRITE_ID);
 		strToSend.append(Channels.PAGE_3_ID);
+		strToSend.append('0'); //CELL READING
+		strToSend.append(Channels.DATA_SIZE);
 		for(String str : strings) {
 			strToSend.append(str);
 		}
