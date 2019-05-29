@@ -12,8 +12,7 @@ public class SenderPage0 extends Sender {
 
 	@Override
 	public void Send(DataElem element) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }

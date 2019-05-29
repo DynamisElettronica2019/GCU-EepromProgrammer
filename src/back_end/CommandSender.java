@@ -9,7 +9,6 @@ import back_end.sender.SenderPage4;
 import back_end.sender.SenderPage5;
 import back_end.sender.SenderPage6;
 import back_end.sender.SenderPage7;
-import configuration.Channels;
 import front_end.View;
 
 public class CommandSender {

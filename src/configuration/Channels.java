@@ -112,6 +112,116 @@ public class Channels {
 	public static final int GEARSHIFT_SIZE = PAGE1_SIZE + PAGE2_SIZE + PAGE3_SIZE + PAGE4_SIZE;
 	public static final int ACCELERATION_SIZE = PAGE5_SIZE + PAGE6_SIZE + PAGE7_SIZE;
 	
+	/*
+	 * Page 0 indexes
+	 */
+	public static final int EEPROM_STATE_START = 0;
+	public static final int EEPROM_STATE_END = 0;
+	public static final int EEPROM_LAST_COM_START = 2;
+	public static final int EEPROM_LAST_COM_END = 2;
+	public static final int EEPROM_READ_COUNTER_START = 4;
+	public static final int EEPROM_READ_COUNTER_END = 5;
+	public static final int EEPROM_WRITE_COUNTER_START = 7;
+	public static final int EEPROM_WRITE_COUNTER_END = 8;
+	
+	/*
+	 * Page 1 indexes
+	 */
+	public static final int NT_PUSH_1_N_START = 0;
+	public static final int NT_PUSH_1_N_END = 1;
+	public static final int NT_CLUTCH_1_N_START = 2;
+	public static final int NT_CLUTCH_1_N_END = 3;
+	public static final int NT_REBOUND_1_N_START = 4;
+	public static final int NT_REBOUND_1_N_END = 5;
+	public static final int NT_BRAKE_1_N_START = 6;
+	public static final int NT_BRAKE_1_N_END = 7;
+	public static final int NT_PUSH_2_N_START = 8;
+	public static final int NT_PUSH_2_N_END = 9;
+	public static final int NT_CLUTCH_2_N_START = 10;
+	public static final int NT_CLUTCH_2_N_END = 11;
+	public static final int NT_REBOUND_2_N_START = 12;
+	public static final int NT_REBOUND_2_N_END = 13;
+	public static final int NT_BRAKE_2_N_START = 14;
+	public static final int NT_BRAKE_2_N_END = 15;
+	
+	/*
+	 * Page 2 indexes
+	 */
+	public static final int DN_PUSH_START = 0;
+	public static final int DN_PUSH_END = 1;
+	public static final int CLUTCH_START = 2;
+	public static final int CLUTCH_END = 3;
+	public static final int DN_REBOUND_START = 4;
+	public static final int DN_REBOUND_END = 5;
+	public static final int DN_BRAKE_START = 6;
+	public static final int DN_BRAKE_END = 7;
+	public static final int UP_PUSH_1_2_START = 8;
+	public static final int UP_PUSH_1_2_END = 9;
+	public static final int UP_PUSH_2_3_START = 10;
+	public static final int UP_PUSH_2_3_END = 11;
+	public static final int UP_PUSH_3_4_START = 12;
+	public static final int UP_PUSH_3_4_END = 13;
+	public static final int UP_PUSH_4_5_START = 14;
+	public static final int UP_PUSH_4_5_END = 15;
+	
+	/*
+	 * Page 3 indexes
+	 */
+	public static final int DELAY_START = 0;
+	public static final int DELAY_END = 1;
+	public static final int UP_REBOUND_START = 2;
+	public static final int UP_REBOUND_END = 3;
+	public static final int UP_BRAKE_START = 4;
+	public static final int UP_BRAKE_END = 5;
+	public static final int NT_CLUTCH_DELAY_START = 6;
+	public static final int NT_CLUTCH_DELAY_END = 7;
+	public static final int DOWN_TIME_CHECK_START = 8;
+	public static final int DOWN_TIME_CHECK_END = 9;
+	public static final int UP_TIME_CHECK_START = 10;
+	public static final int UP_TIME_CHECK_END = 11;
+	public static final int MAX_TRIES_START = 12;
+	public static final int MAX_TRIES_END = 13;
+	
+	/*
+	 * Page 4 indexes
+	 */
+	
+	/*
+	 * Page 5 indexes
+	 */
+	public static final int RAMP_START_START = 0;
+	public static final int RAMP_START_END = 1;
+	public static final int RAMP_END_START = 2;
+	public static final int RAMP_END_END = 3;
+	public static final int RAMP_TIME_START = 4;
+	public static final int RAMP_TIME_END = 5;
+	public static final int RPM_LIMIT_1_2_START = 6;
+	public static final int RPM_LIMIT_1_2_END = 7;
+	public static final int RPM_LIMIT_2_3_START = 8;
+	public static final int RPM_LIMIT_2_3_END = 9;
+	public static final int RPM_LIMIT_3_4_START = 10;
+	public static final int RPM_LIMIT_3_4_END = 11;
+	public static final int RPM_LIMIT_4_5_START = 12;
+	public static final int RPM_LIMIT_4_5_END = 13;
+	public static final int SPEED_LIMIT_1_2_START = 14;
+	public static final int SPEED_LIMIT_1_2_END = 15;
+	
+	/*
+	 * Page 6 indexes
+	 */
+	public static final int SPEED_LIMIT_2_3_START = 0;
+	public static final int SPEED_LIMIT_2_3_END = 1;
+	public static final int SPEED_LIMIT_3_4_START = 2;
+	public static final int SPEED_LIMIT_3_4_END = 3;
+	public static final int SPEED_LIMIT_4_5_START = 4;
+	public static final int SPEED_LIMIT_4_5_END = 5;
+	public static final int TPS_START_LIMIT_START = 6;
+	public static final int TPS_START_LIMIT_END = 7;
+	
+	/*
+	 * Page 7 indexes
+	 */
+	
 	
 	public Channels() {
 		/*

@@ -3,14 +3,7 @@ package back_end.parsed;
 import configuration.Channels;
 
 public class ParsedPage0 extends Parsed {
-	private final int EEPROM_STATE_START = 0;
-	private final int EEPROM_STATE_END = 0;
-	private final int EEPROM_LAST_COM_START = 2;
-	private final int EEPROM_LAST_COM_END = 2;
-	private final int EEPROM_READ_COUNTER_START = 4;
-	private final int EEPROM_READ_COUNTER_END = 5;
-	private final int EEPROM_WRITE_COUNTER_START = 7;
-	private final int EEPROM_WRITE_COUNTER_END = 8;
+	
 
 	public ParsedPage0(char messageType) {
 		super(messageType);
@@ -21,16 +14,16 @@ public class ParsedPage0 extends Parsed {
 		/*
 		 * Substrings creation
 		 */
-		parsed.add(string.substring(EEPROM_STATE_START, EEPROM_STATE_END));
+		parsed.add(string.substring(Channels.EEPROM_STATE_START, Channels.EEPROM_STATE_END));
 		parsedName.add(Channels.EEPROM_STATE_NAME);
 		parsedMap.put(Channels.EEPROM_STATE_NAME, 0);
-		parsed.add(string.substring(EEPROM_LAST_COM_START, EEPROM_LAST_COM_END));
+		parsed.add(string.substring(Channels.EEPROM_LAST_COM_START, Channels.EEPROM_LAST_COM_END));
 		parsedName.add(Channels.EEPROM_LAST_COM_NAME);
 		parsedMap.put(Channels.EEPROM_STATE_NAME, 1);
-		parsed.add(string.substring(EEPROM_READ_COUNTER_START, EEPROM_READ_COUNTER_END));
+		parsed.add(string.substring(Channels.EEPROM_READ_COUNTER_START, Channels.EEPROM_READ_COUNTER_END));
 		parsedName.add(Channels.EEPROM_READ_COUNTER_NAME);
 		parsedMap.put(Channels.EEPROM_STATE_NAME, 2);
-		parsed.add(string.substring(EEPROM_WRITE_COUNTER_START, EEPROM_WRITE_COUNTER_END));
+		parsed.add(string.substring(Channels.EEPROM_WRITE_COUNTER_START, Channels.EEPROM_WRITE_COUNTER_END));
 		parsedName.add(Channels.EEPROM_WRITE_COUNTER_NAME);
 		parsedMap.put(Channels.EEPROM_STATE_NAME, 3);
 	}
