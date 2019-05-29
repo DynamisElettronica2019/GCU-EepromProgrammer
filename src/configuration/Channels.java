@@ -13,6 +13,18 @@ public class Channels {
 	public static final char ERROR_ID = 'E';
 	
 	/*
+	 * Page types
+	 */
+	public static final char PAGE_0_ID = '0';
+	public static final char PAGE_1_ID = '1';
+	public static final char PAGE_2_ID = '2';
+	public static final char PAGE_3_ID = '3';
+	public static final char PAGE_4_ID = '4';
+	public static final char PAGE_5_ID = '5';
+	public static final char PAGE_6_ID = '6';
+	public static final char PAGE_7_ID = '7';
+	
+	/*
 	 * Send costants
 	 */
 	public static final byte DATA_SIZE = 16;

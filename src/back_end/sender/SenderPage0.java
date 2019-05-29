@@ -19,11 +19,13 @@ public class SenderPage0 extends Sender {
 	@Override
 	public void Send(DataElem element) {
 		ArrayList<String> strings = element.GetPageStrings(Channels.PAGE0_INDEX_START - Channels.PAGE0_INDEX_START, Channels.PAGE0_INDEX_END - Channels.PAGE0_INDEX_START);
-		String strToSend = new String();
+		StringBuilder strToSend = new StringBuilder();
+		strToSend.append(Channels.WRITE_ID);
+		strToSend.append(Channels.PAGE_0_ID);
 		for(String str : strings) {
-			strToSend.concat(str);
+			strToSend.append(str);
 		}
-		receiver.send(strToSend);
+		receiver.send(strToSend.toString());
 	}
 
 }
