@@ -1,7 +1,10 @@
 package back_end.sender;
 
+import java.util.ArrayList;
+
 import back_end.DataElem;
 import back_end.Receiver;
+import configuration.Channels;
 
 public class SenderPage5 extends Sender {
 
@@ -12,8 +15,12 @@ public class SenderPage5 extends Sender {
 
 	@Override
 	public void Send(DataElem element) {
-		// TODO Auto-generated method stub
-
+		ArrayList<String> strings = element.GetPageStrings(Channels.PAGE5_INDEX_START - Channels.PAGE5_INDEX_START, Channels.PAGE5_INDEX_END - Channels.PAGE5_INDEX_START);
+		String strToSend = new String();
+		for(String str : strings) {
+			strToSend.concat(str);
+		}
+		receiver.send(strToSend);
 	}
 
 }
