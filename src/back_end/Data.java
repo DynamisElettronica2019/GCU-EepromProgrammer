@@ -1,5 +1,6 @@
 package back_end;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import back_end.parsed.ParsedPage0;
@@ -17,7 +18,7 @@ public class Data {
 	private Gearshift gearshift;
 	private Acceleration acceleration;
 	
-	public Data(ArrayList<View> myViews) {
+	public Data(ArrayList<View> myViews) throws IOException {
 		gearshift = new Gearshift(myViews);
 		acceleration = new Acceleration(myViews);
 		

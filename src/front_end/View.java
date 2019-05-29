@@ -1,6 +1,8 @@
 package front_end;
 
 
+import java.io.IOException;
+
 import back_end.Acceleration;
 import back_end.CommandSender;
 import back_end.Debug;
@@ -28,7 +30,7 @@ public abstract class View {
 		this.commandSender = commandSender;
 	}
 	
-	public void setViewLoader(ViewLoader viewLoader) {
+	public void setViewLoader(ViewLoader viewLoader) throws IOException {
 		this.viewLoader = viewLoader;
 	}
 	

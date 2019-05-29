@@ -1,5 +1,6 @@
 package main;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import back_end.Data;
@@ -11,7 +12,7 @@ import front_end.gui.GuiView;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		/*
 		 * Init channels
 		 */
