@@ -148,12 +148,13 @@ public class Receiver {
 	 * Create string to pass to parser, without "epr"
 	 */
 	private void createString() {
-		strToSend = String.valueOf(strRead, startIndex, closeIndex);
+		StringBuilder strToSend = new StringBuilder();
+		strToSend.append(strRead, startIndex, Channels.STRING_SIZE - 1);
 		strIndex = 0;
 		startIndex = -1;
 		closeIndex = -1;
 		dataCounter = 0;
-		parser.parseString(strToSend); // Pass string to parse to parser
+		parser.parseString(strToSend.toString()); // Pass string to parse to parser
 	}
 	
 	public SerialPort getComPort() {
