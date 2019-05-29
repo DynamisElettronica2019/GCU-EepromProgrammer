@@ -109,6 +109,7 @@ public class Channels {
 	 * Type sizes
 	 */
 	
+	public static final int DEBUG_SIZE = PAGE0_SIZE;
 	public static final int GEARSHIFT_SIZE = PAGE1_SIZE + PAGE2_SIZE + PAGE3_SIZE + PAGE4_SIZE;
 	public static final int ACCELERATION_SIZE = PAGE5_SIZE + PAGE6_SIZE + PAGE7_SIZE;
 	

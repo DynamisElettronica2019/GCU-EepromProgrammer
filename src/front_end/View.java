@@ -3,6 +3,7 @@ package front_end;
 
 import back_end.Acceleration;
 import back_end.CommandSender;
+import back_end.Debug;
 import back_end.Gearshift;
 import back_end.ViewLoader;
 
@@ -10,10 +11,12 @@ public abstract class View {
 	
 	protected CommandSender commandSender; //Not available before setCommandSender call
 	protected ViewLoader viewLoader; //Not available before setViewLoader call
+	private DebugObserver debugObs;
 	private GearshiftObserver gearObs;
 	private AccelerationObserver accObs;
 	
 	public View() {
+		debugObs = new DebugObserver(this);
 		gearObs = new GearshiftObserver(this);
 		accObs = new AccelerationObserver(this);
 	}
@@ -27,6 +30,10 @@ public abstract class View {
 	
 	public void setViewLoader(ViewLoader viewLoader) {
 		this.viewLoader = viewLoader;
+	}
+	
+	public DebugObserver getDebugObs() {
+		return debugObs;
 	}
 	
 	public GearshiftObserver getGearObs() {
@@ -44,6 +51,11 @@ public abstract class View {
 	public ViewLoader getViewLoader() {
 		return viewLoader;
 	}
+	
+	/*
+	 * Implement for update of gearshift pages
+	 */
+	public abstract void UpdateDebug(Debug debug);
 	
 	/*
 	 * Implement for update of gearshift pages

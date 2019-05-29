@@ -13,6 +13,7 @@ import back_end.parsed.ParsedPage7;
 import front_end.View;
 
 public class Data {
+	private Debug debug;
 	private Gearshift gearshift;
 	private Acceleration acceleration;
 	
@@ -27,6 +28,14 @@ public class Data {
 	/*
 	 * Gear and acceleration getter and setter
 	 */
+	public Debug getDebug() {
+		return debug;
+	}
+
+	public void setDebug(Debug debug) {
+		this.debug = debug;
+	}
+	
 	public Gearshift getGearshift() {
 		return gearshift;
 	}
