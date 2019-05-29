@@ -4,6 +4,18 @@ import java.util.ArrayList;
 
 public class Channels {
 	private static ArrayList<String> channelNames = new ArrayList<String>();
+	/*
+	 * Message types
+	 */
+	public static final char READ_ID = 'R';
+	public static final char WRITE_ID = 'W';
+	public static final char LOAD_ID = 'L';
+	public static final char ERROR_ID = 'E';
+	
+	/*
+	 * Send costants
+	 */
+	public static final byte DATA_SIZE = 16;
 	
 	/*
 	 * Page 0 channel names

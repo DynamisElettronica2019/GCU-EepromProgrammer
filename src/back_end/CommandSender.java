@@ -9,6 +9,7 @@ import back_end.sender.SenderPage4;
 import back_end.sender.SenderPage5;
 import back_end.sender.SenderPage6;
 import back_end.sender.SenderPage7;
+import configuration.Channels;
 import front_end.View;
 
 public class CommandSender {
@@ -32,6 +33,21 @@ public class CommandSender {
 	 */
 	public void sendCommand(String comm) {
 		receiver.send(comm);
+	}
+	
+	/*
+	 * Read page
+	 */
+	public void sendReadRequest(char page) {
+		StringBuilder string = new StringBuilder();
+		string.append(Channels.READ_ID);
+		string.append(page);
+		// Missing cell to read from
+		string.append(Channels.DATA_SIZE);
+		for(int i=0; i<Channels.DATA_SIZE; i++) {
+			string.append('0');
+		}
+		receiver.send(string.toString());
 	}
 	
 	/*
