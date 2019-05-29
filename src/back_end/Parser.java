@@ -46,6 +46,11 @@ public class Parser {
 		StringBuilder sb = new StringBuilder(stringToParse);
 		if(sb.toString().charAt(0) != Channels.LOAD_ID) {
 			System.err.println("Id error");
+			return;
+		}
+		if(sb.toString().length() != (Channels.HEADER_ID_END - Channels.HEADER_ID_START + Channels.DATA_SIZE)) {
+			System.err.println("Received message lenght error");
+			return;
 		}
 		switch (stringToParse.charAt(1)) {
 		case '0':

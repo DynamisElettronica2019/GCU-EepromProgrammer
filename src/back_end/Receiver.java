@@ -7,6 +7,7 @@ import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortEvent;
 import com.fazecast.jSerialComm.SerialPortPacketListener;
 
+import configuration.Channels;
 import front_end.View;
 
 public class Receiver {
@@ -44,6 +45,9 @@ public class Receiver {
 	 * Send data through serial, string is the parameter
 	 */
 	public void send(String toSend) {
+		if(toSend.length() != (Channels.HEADER_ID_END - Channels.HEADER_ID_START + Channels.DATA_SIZE)) {
+			System.err.println("Sending message lenght error");
+		}
 		toSend = "epr"+toSend;
 		comPort.writeBytes(toSend.getBytes(), toSend.getBytes().length);
 	}
