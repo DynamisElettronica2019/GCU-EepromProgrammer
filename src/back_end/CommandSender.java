@@ -90,4 +90,15 @@ public class CommandSender {
 		SenderPage7 sender = new SenderPage7(receiver);
 		sender.Send(data.getGearshift());
 	}
+	
+	/*
+	 * Set relative serialPort
+	 */
+	public void openPort(String str) {
+		receiver.Reader(str);
+	}
+	
+	public void closePort() {
+		receiver.closePort();
+	}
 }

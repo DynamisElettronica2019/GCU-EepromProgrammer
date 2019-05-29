@@ -28,11 +28,11 @@ public class GuiController implements Initializable {
 
 	@FXML
 	private void connectClick() {
-		
+		view.getCommandSender().openPort(comComboBox.getValue());
 	}
 	
 	@FXML
 	private void disconnectClick() {
-		
+		view.getCommandSender().closePort();
 	}
 }

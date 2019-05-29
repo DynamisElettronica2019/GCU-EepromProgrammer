@@ -38,13 +38,8 @@ public class Main extends Application {
 		Data data = new Data(myViews);
 		Parser parser = new Parser(data);
 		
+		@SuppressWarnings("unused")
 		Receiver receiver = new Receiver(data,parser,myViews);
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				receiver.Reader();
-			}
-		}).start();
 	}
 
 }
