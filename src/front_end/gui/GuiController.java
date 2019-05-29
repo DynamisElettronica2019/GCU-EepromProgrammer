@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import com.fazecast.jSerialComm.SerialPort;
 
+import back_end.Debug;
 import back_end.parsed.ParsedPage0;
 import configuration.Channels;
 import javafx.fxml.FXML;
@@ -58,5 +59,12 @@ public class GuiController implements Initializable {
 		parsed.splitString(eepromStateField.getText() + "0" + eepromLastComField.getText() + "0" + eepromReadCounterField.getText() + "0" + eepromWriteCounterField.getText());
 		view.getCommandSender().setNewDataPage0(parsed);
 		view.getCommandSender().sendNewDataPage0();
+	}
+	
+	public void updateDebug(Debug debug) {
+		eepromStateField.setText(debug.GetValue(0));
+		eepromLastComField.setText(debug.GetValue(1));
+		eepromReadCounterField.setText(debug.GetValue(2));
+		eepromWriteCounterField.setText(debug.GetValue(3));
 	}
 }

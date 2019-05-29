@@ -47,7 +47,6 @@ public class Receiver {
 		if(toSend.length() != (Channels.STRING_SIZE)) {
 			System.err.println("Sending message lenght error");
 		}
-		System.out.println(toSend);
 		toSend = "epr"+toSend;
 		comPort.writeBytes(toSend.getBytes(), toSend.getBytes().length);
 	}
@@ -87,11 +86,12 @@ public class Receiver {
 						startIndex = strIndex;
 					}
 					else if (state == 3) { // Salva l'indice della parentesi aperta
-						if(dataCounter < 19) {
+						if(dataCounter < Channels.STRING_SIZE - 2) {
 							dataCounter++;
 							strIndex++;
 						}
 						else {
+							state = 0;
 							closeIndex = strIndex;
 							createString(); // Call string processing function
 						}	
@@ -152,6 +152,7 @@ public class Receiver {
 		strIndex = 0;
 		startIndex = -1;
 		closeIndex = -1;
+		dataCounter = 0;
 		parser.parseString(strToSend); // Pass string to parse to parser
 	}
 	

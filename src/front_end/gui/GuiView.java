@@ -84,8 +84,7 @@ public class GuiView extends View {
 
 	@Override
 	public void UpdateDebug(Debug debug) {
-		// TODO Auto-generated method stub
-		
+		controller.updateDebug(debug);
 	}
 
 }

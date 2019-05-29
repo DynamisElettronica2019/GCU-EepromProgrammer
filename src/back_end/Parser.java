@@ -44,7 +44,7 @@ public class Parser {
 	 */
 	public void parseString(String stringToParse) {
 		StringBuilder sb = new StringBuilder(stringToParse);
-		if(sb.toString().length() != (Channels.HEADER_ID_END - Channels.HEADER_ID_START + Channels.DATA_SIZE - 1)) {
+		if(sb.toString().length() != (Channels.STRING_SIZE - 1)) {
 			System.err.println("Received message lenght error");
 			return;
 		}

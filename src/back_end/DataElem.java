@@ -53,6 +53,13 @@ public class DataElem extends Observable{
 		}
 		return pageStrings;
 	}
+	
+	/*
+	 * Return selected value
+	 */
+	public String GetValue(int index) {
+		return elementValues.get(index);
+	}
 
 	/*
 	 * Notify view
