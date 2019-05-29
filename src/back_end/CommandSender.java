@@ -43,7 +43,6 @@ public class CommandSender {
 		string.append(Channels.READ_ID);
 		string.append(page);
 		// Missing cell to read from
-		string.append(Channels.DATA_SIZE);
 		for(int i=0; i<Channels.DATA_SIZE; i++) {
 			string.append('0');
 		}
