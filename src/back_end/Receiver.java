@@ -44,7 +44,7 @@ public class Receiver {
 	 * Send data through serial, string is the parameter
 	 */
 	public void send(String toSend) {
-		if(toSend.length() != (Channels.HEADER_ID_END - Channels.HEADER_ID_START + Channels.DATA_SIZE)) {
+		if(toSend.length() != (Channels.STRING_SIZE)) {
 			System.err.println("Sending message lenght error");
 		}
 		toSend = "epr"+toSend;

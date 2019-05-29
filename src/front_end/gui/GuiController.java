@@ -5,9 +5,12 @@ import java.util.ResourceBundle;
 
 import com.fazecast.jSerialComm.SerialPort;
 
+import back_end.parsed.ParsedPage0;
+import configuration.Channels;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
@@ -17,6 +20,8 @@ public class GuiController implements Initializable {
 	private Circle connectionStatus;
 	@FXML
 	private ComboBox<String> comComboBox;
+	@FXML
+	private TextField eepromStateField, eepromLastComField, eepromReadCounterField, eepromWriteCounterField;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -40,5 +45,18 @@ public class GuiController implements Initializable {
 	private void disconnectClick() {
 		view.getCommandSender().closePort();
 		connectionStatus.setFill(Color.RED);
+	}
+	
+	@FXML
+	private void readDebug() {
+		view.getCommandSender().sendReadRequest(Channels.PAGE_0_ID);
+	}
+	
+	@FXML
+	private void writeDebug() {
+		ParsedPage0 parsed = new ParsedPage0('0');
+		parsed.splitString(eepromStateField.getText() + "0" + eepromLastComField.getText() + "0" + eepromReadCounterField.getText() + "0" + eepromWriteCounterField.getText());
+		view.getCommandSender().setNewDataPage0(parsed);
+		view.getCommandSender().sendNewDataPage0();
 	}
 }

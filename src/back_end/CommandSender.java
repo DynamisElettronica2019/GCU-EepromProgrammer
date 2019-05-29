@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import com.fazecast.jSerialComm.SerialPort;
 
+import back_end.parsed.ParsedPage0;
+import back_end.sender.SenderPage0;
 import back_end.sender.SenderPage1;
 import back_end.sender.SenderPage2;
 import back_end.sender.SenderPage3;
@@ -49,6 +51,21 @@ public class CommandSender {
 			string.append('0');
 		}
 		receiver.send(string.toString());
+	}
+	
+	/*
+	 * Send debug page
+	 */
+	public void sendNewDataPage0() {
+		SenderPage0 sender = new SenderPage0(receiver);
+		sender.Send(data.getDebug());
+	}
+	
+	/*
+	 * Send debug page
+	 */
+	public void setNewDataPage0(ParsedPage0 parsed) {
+		data.update(parsed);
 	}
 	
 	/*

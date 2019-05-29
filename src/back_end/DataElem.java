@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Observable;
 
 import back_end.parsed.Parsed;
+import configuration.Channels;
 import front_end.View;
 
 public class DataElem extends Observable{

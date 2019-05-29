@@ -19,6 +19,7 @@ public class Data {
 	private Acceleration acceleration;
 	
 	public Data(ArrayList<View> myViews) throws IOException {
+		debug = new Debug(myViews);
 		gearshift = new Gearshift(myViews);
 		acceleration = new Acceleration(myViews);
 		
@@ -57,7 +58,7 @@ public class Data {
 	 * Every parsed page has its own update method for storing data in gear/accel class
 	 */
 	public void update(ParsedPage0 parsed) {
-		gearshift.UpdatePage(parsed);
+		debug.UpdatePage(parsed);
 	}
 	
 	public void update(ParsedPage1 parsed) {
