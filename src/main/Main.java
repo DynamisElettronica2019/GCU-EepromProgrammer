@@ -1,6 +1,5 @@
 package main;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import back_end.Data;
@@ -9,10 +8,16 @@ import back_end.Receiver;
 import configuration.Channels;
 import front_end.View;
 import front_end.gui.GuiView;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
-public class Main {
+public class Main extends Application {
+	public static void main(String[] args) {
+		launch(args);
+	}
 
-	public static void main(String[] args) throws IOException {
+	@Override
+	public void start(Stage arg0) throws Exception {
 		/*
 		 * Init channels
 		 */
@@ -25,6 +30,7 @@ public class Main {
 		 */
 		ArrayList<View> myViews = new ArrayList<View>();
 		myViews.add(new GuiView());
+		
 		
 		/*
 		 * Create data, parser and start receiver

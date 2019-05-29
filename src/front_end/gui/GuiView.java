@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -20,7 +21,8 @@ public class GuiView extends View {
 	private Scene scene;
 	private Parent mainPane;
 	private GuiController controller;
-	private FXMLLoader MainLoader;
+	private FXMLLoader mainLoader;
+	private AnchorPane anchorPane;
 	
 	public GuiView() throws IOException {
 		super();
@@ -42,7 +44,8 @@ public class GuiView extends View {
         } );
         
         //Initialize stage
-        scene = new Scene(mainPane);
+        anchorPane = new AnchorPane();
+        scene = new Scene(anchorPane);
         stage.setScene(scene);
         stage.show();
 	}
@@ -50,9 +53,16 @@ public class GuiView extends View {
 	@Override
 	public void setViewLoader(ViewLoader viewLoader) throws IOException {
 		//Set first two FXML and pass viewloader
-		MainLoader = new FXMLLoader();
-		mainPane = MainLoader.load(getClass().getResource("GuiScreen.fxml").openStream());
-		controller = MainLoader.getController();
+		mainLoader = new FXMLLoader();
+		mainPane = mainLoader.load(getClass().getResource("GuiScreen.fxml").openStream());
+		controller = mainLoader.getController();
+		
+	    //Set SX constraints
+	    AnchorPane.setTopAnchor(mainPane, 0.0);
+	    AnchorPane.setBottomAnchor(mainPane, 0.0);
+	    AnchorPane.setLeftAnchor(mainPane, 0.0);
+	    AnchorPane.setRightAnchor(mainPane, 0.0);
+	    anchorPane.getChildren().add(mainPane);
 	    
 		controller.SetView(this);
 	    
