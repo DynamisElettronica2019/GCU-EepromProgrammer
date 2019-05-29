@@ -10,6 +10,7 @@ import back_end.parsed.ParsedPage4;
 import back_end.parsed.ParsedPage5;
 import back_end.parsed.ParsedPage6;
 import back_end.parsed.ParsedPage7;
+import configuration.Channels;
 
 public class Parser {
 	private ArrayList<Character> pageIdentifier = new ArrayList<Character>(); // For future use
@@ -42,49 +43,61 @@ public class Parser {
 	 * exception if the input string is not valid.
 	 */
 	public void parseString(String stringToParse) {
-		switch (stringToParse.charAt(0)) {
+		StringBuilder sb = new StringBuilder(stringToParse);
+		if(sb.toString().charAt(0) != Channels.LOAD_ID) {
+			System.err.println("Id error");
+		}
+		switch (stringToParse.charAt(1)) {
 		case '0':
 			ParsedPage0 parsed0 = new ParsedPage0('0');
-			parsed0.splitString(stringToParse);
+			sb.delete(Channels.HEADER_ID_START, Channels.HEADER_ID_END);
+			parsed0.splitString(sb.toString());
 			data.update(parsed0);
 			break;
 		case '1':
 			ParsedPage1 parsed1 = new ParsedPage1('1');
-			parsed1.splitString(stringToParse);
+			sb.delete(Channels.HEADER_ID_START, Channels.HEADER_ID_END);
+			parsed1.splitString(sb.toString());
 			data.update(parsed1);
 			break;
 		case '2':
 			ParsedPage2 parsed2 = new ParsedPage2('2');
-			parsed2.splitString(stringToParse);
+			sb.delete(Channels.HEADER_ID_START, Channels.HEADER_ID_END);
+			parsed2.splitString(sb.toString());
 			data.update(parsed2);
 			break;
 		case '3':
 			ParsedPage3 parsed3 = new ParsedPage3('3');
-			parsed3.splitString(stringToParse);
+			sb.delete(Channels.HEADER_ID_START, Channels.HEADER_ID_END);
+			parsed3.splitString(sb.toString());
 			data.update(parsed3);
 			break;
 		case '4':
 			ParsedPage4 parsed4 = new ParsedPage4('4');
-			parsed4.splitString(stringToParse);
+			sb.delete(Channels.HEADER_ID_START, Channels.HEADER_ID_END);
+			parsed4.splitString(sb.toString());
 			data.update(parsed4);
 			break;
 		case '5':
 			ParsedPage5 parsed5 = new ParsedPage5('5');
-			parsed5.splitString(stringToParse);
+			sb.delete(Channels.HEADER_ID_START, Channels.HEADER_ID_END);
+			parsed5.splitString(sb.toString());
 			data.update(parsed5);
 			break;
 		case '6':
 			ParsedPage6 parsed6 = new ParsedPage6('6');
-			parsed6.splitString(stringToParse);
+			sb.delete(Channels.HEADER_ID_START, Channels.HEADER_ID_END);
+			parsed6.splitString(sb.toString());
 			data.update(parsed6);
 			break;
 		case '7':
 			ParsedPage7 parsed7 = new ParsedPage7('7');
-			parsed7.splitString(stringToParse);
+			sb.delete(Channels.HEADER_ID_START, Channels.HEADER_ID_END);
+			parsed7.splitString(sb.toString());
 			data.update(parsed7);
 			break;
 		default:
-			System.out.println("First letter reading error");
+			System.err.println("Page reading error");
 		}
 	}
 }
