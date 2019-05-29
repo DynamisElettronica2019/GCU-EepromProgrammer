@@ -47,6 +47,7 @@ public class Receiver {
 		if(toSend.length() != (Channels.STRING_SIZE)) {
 			System.err.println("Sending message lenght error");
 		}
+		System.out.println(toSend);
 		toSend = "epr"+toSend;
 		comPort.writeBytes(toSend.getBytes(), toSend.getBytes().length);
 	}

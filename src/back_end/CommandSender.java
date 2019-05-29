@@ -46,7 +46,7 @@ public class CommandSender {
 		string.append(Channels.READ_ID);
 		string.append(page);
 		string.append('0'); //CELL READING
-		string.append(Channels.DATA_SIZE);
+		string.append((char) Channels.DATA_SIZE);
 		for(int i=0; i<Channels.DATA_SIZE; i++) {
 			string.append('0');
 		}
