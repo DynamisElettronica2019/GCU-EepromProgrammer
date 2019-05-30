@@ -62,9 +62,44 @@ public class GuiController implements Initializable {
 	}
 	
 	public void updateDebug(Debug debug) {
-		eepromStateField.setText(debug.GetValue(0));
-		eepromLastComField.setText(debug.GetValue(1));
-		eepromReadCounterField.setText(debug.GetValue(2));
-		eepromWriteCounterField.setText(debug.GetValue(3));
+		eepromStateField.setText(String.valueOf(getNumericValue(debug.GetValue(0))));
+		eepromLastComField.setText(String.valueOf(getNumericValue(debug.GetValue(1))));
+		eepromReadCounterField.setText(String.valueOf(getNumericValue(debug.GetValue(2))));
+		eepromWriteCounterField.setText(String.valueOf(getNumericValue(debug.GetValue(3))));
+		
+		//eepromStateField.setText(debug.GetValue(0));
+		//eepromLastComField.setText(debug.GetValue(1));
+		//eepromReadCounterField.setText(debug.GetValue(2));
+		//eepromWriteCounterField.setText(debug.GetValue(3));
+	}
+	
+	public char getLowerChar(short num) {
+		return ((char)(num & 0xFF));
+	}
+	
+	public char getUpperChar(short num) {
+		return ((char)((num >> 8) & 0xFF));
+	}
+	
+	/*
+	 * Get short from 2 byte string
+	 */
+	public short getNumericValue(String string) {
+		if(string.length() != 2) {
+			System.err.println("Field lenght conversion error");
+			
+			return 0;
+		}
+		else {
+			short number = 0;
+			byte upper = (byte) string.charAt(0);
+			byte lower = (byte) string.charAt(1);
+
+			number = (short) ((number & 0xff00) | lower);
+			number = (short) ((number & 0x00ff) | (upper << 8));
+
+
+			return number;
+		}
 	}
 }
