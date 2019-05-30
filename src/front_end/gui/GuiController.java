@@ -12,6 +12,7 @@ import back_end.parsed.ParsedPage1;
 import back_end.parsed.ParsedPage2;
 import back_end.parsed.ParsedPage3;
 import configuration.Channels;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -170,38 +171,48 @@ public class GuiController implements Initializable {
 	}
 	
 	public void updateDebug(Debug debug) {
-		eepromStateField.setText(String.valueOf(getNumericValue(debug.GetValue(0))));
-		eepromLastComField.setText(String.valueOf(getNumericValue(debug.GetValue(1))));
-		eepromReadCounterField.setText(String.valueOf(getNumericValue(debug.GetValue(2))));
-		eepromWriteCounterField.setText(String.valueOf(getNumericValue(debug.GetValue(3))));
+		Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+        		eepromStateField.setText(String.valueOf(getNumericValue(debug.GetValue(0))));
+        		eepromLastComField.setText(String.valueOf(getNumericValue(debug.GetValue(1))));
+        		eepromReadCounterField.setText(String.valueOf(getNumericValue(debug.GetValue(2))));
+        		eepromWriteCounterField.setText(String.valueOf(getNumericValue(debug.GetValue(3))));
+            }
+        });
 	}
 	
 	public void updateGear(Gearshift gear) {
-		NT_PUSH_1_NField.setText(String.valueOf(getNumericValue(gear.GetValue(0))));
-		NT_CLUTCH_1_NField.setText(String.valueOf(getNumericValue(gear.GetValue(1))));
-		NT_REBOUND_1_NField.setText(String.valueOf(getNumericValue(gear.GetValue(2))));
-		NT_BRAKE_1_NField.setText(String.valueOf(getNumericValue(gear.GetValue(3))));
-		NT_PUSH_2_NField.setText(String.valueOf(getNumericValue(gear.GetValue(4))));
-		NT_CLUTCH_2_NField.setText(String.valueOf(getNumericValue(gear.GetValue(5))));
-		NT_REBOUND_2_NField.setText(String.valueOf(getNumericValue(gear.GetValue(6))));
-		NT_BRAKE_2_NField.setText(String.valueOf(getNumericValue(gear.GetValue(7))));
-		
-		DN_PUSHField.setText(String.valueOf(getNumericValue(gear.GetValue(8))));
-		CLUTCHField.setText(String.valueOf(getNumericValue(gear.GetValue(9))));
-		DN_REBOUNDField.setText(String.valueOf(getNumericValue(gear.GetValue(10))));
-		DN_BRAKEField.setText(String.valueOf(getNumericValue(gear.GetValue(11))));
-		UP_PUSH_1_2Field.setText(String.valueOf(getNumericValue(gear.GetValue(12))));
-		UP_PUSH_2_3Field.setText(String.valueOf(getNumericValue(gear.GetValue(13))));
-		UP_PUSH_3_4Field.setText(String.valueOf(getNumericValue(gear.GetValue(14))));
-		UP_PUSH_4_5Field.setText(String.valueOf(getNumericValue(gear.GetValue(15))));
-		
-		DELAYField.setText(String.valueOf(getNumericValue(gear.GetValue(16))));
-		UP_REBOUNDField.setText(String.valueOf(getNumericValue(gear.GetValue(17))));
-		UP_BRAKEField.setText(String.valueOf(getNumericValue(gear.GetValue(18))));
-		NT_CLUTCH_DELAYField.setText(String.valueOf(getNumericValue(gear.GetValue(19))));
-		DOWN_TIME_CHECKField.setText(String.valueOf(getNumericValue(gear.GetValue(20))));
-		UP_TIME_CHECKField.setText(String.valueOf(getNumericValue(gear.GetValue(21))));
-		MAX_TRIESField.setText(String.valueOf(getNumericValue(gear.GetValue(22))));
+		Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+        		NT_PUSH_1_NField.setText(String.valueOf(getNumericValue(gear.GetValue(0))));
+        		NT_CLUTCH_1_NField.setText(String.valueOf(getNumericValue(gear.GetValue(1))));
+        		NT_REBOUND_1_NField.setText(String.valueOf(getNumericValue(gear.GetValue(2))));
+        		NT_BRAKE_1_NField.setText(String.valueOf(getNumericValue(gear.GetValue(3))));
+        		NT_PUSH_2_NField.setText(String.valueOf(getNumericValue(gear.GetValue(4))));
+        		NT_CLUTCH_2_NField.setText(String.valueOf(getNumericValue(gear.GetValue(5))));
+        		NT_REBOUND_2_NField.setText(String.valueOf(getNumericValue(gear.GetValue(6))));
+        		NT_BRAKE_2_NField.setText(String.valueOf(getNumericValue(gear.GetValue(7))));
+        		
+        		DN_PUSHField.setText(String.valueOf(getNumericValue(gear.GetValue(8))));
+        		CLUTCHField.setText(String.valueOf(getNumericValue(gear.GetValue(9))));
+        		DN_REBOUNDField.setText(String.valueOf(getNumericValue(gear.GetValue(10))));
+        		DN_BRAKEField.setText(String.valueOf(getNumericValue(gear.GetValue(11))));
+        		UP_PUSH_1_2Field.setText(String.valueOf(getNumericValue(gear.GetValue(12))));
+        		UP_PUSH_2_3Field.setText(String.valueOf(getNumericValue(gear.GetValue(13))));
+        		UP_PUSH_3_4Field.setText(String.valueOf(getNumericValue(gear.GetValue(14))));
+        		UP_PUSH_4_5Field.setText(String.valueOf(getNumericValue(gear.GetValue(15))));
+        		
+        		DELAYField.setText(String.valueOf(getNumericValue(gear.GetValue(16))));
+        		UP_REBOUNDField.setText(String.valueOf(getNumericValue(gear.GetValue(17))));
+        		UP_BRAKEField.setText(String.valueOf(getNumericValue(gear.GetValue(18))));
+        		NT_CLUTCH_DELAYField.setText(String.valueOf(getNumericValue(gear.GetValue(19))));
+        		DOWN_TIME_CHECKField.setText(String.valueOf(getNumericValue(gear.GetValue(20))));
+        		UP_TIME_CHECKField.setText(String.valueOf(getNumericValue(gear.GetValue(21))));
+        		MAX_TRIESField.setText(String.valueOf(getNumericValue(gear.GetValue(22))));
+            }
+        });
 	}
 	
 	public char getLowerChar(short num) {
