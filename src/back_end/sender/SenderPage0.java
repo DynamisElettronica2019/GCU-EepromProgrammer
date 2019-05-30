@@ -24,9 +24,11 @@ public class SenderPage0 extends Sender {
 		strToSend.append(Channels.PAGE_0_ID);
 		strToSend.append('0'); //CELL READING
 		strToSend.append((char) Channels.DATA_SIZE);
-		for(String str : strings) {
-			strToSend.append(str);
-			strToSend.append('0');
+		for(int i=0; i<strings.size(); i++) {
+			strToSend.append(strings.get(i));
+			if(i==2) {
+				strToSend.append('0'); // Need 0 after this element
+			}
 		}
 		while(strToSend.toString().length() < Channels.STRING_SIZE) {
 			strToSend.append('0');

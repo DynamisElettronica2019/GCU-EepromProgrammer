@@ -55,8 +55,18 @@ public class GuiController implements Initializable {
 	
 	@FXML
 	private void writeDebug() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(getUpperChar(Short.parseShort(eepromStateField.getText())));
+		sb.append(getLowerChar(Short.parseShort(eepromStateField.getText())));
+		sb.append(getUpperChar(Short.parseShort(eepromLastComField.getText())));
+		sb.append(getLowerChar(Short.parseShort(eepromLastComField.getText())));
+		sb.append(getUpperChar(Short.parseShort(eepromReadCounterField.getText())));
+		sb.append(getLowerChar(Short.parseShort(eepromReadCounterField.getText())));
+		sb.append('0');
+		sb.append(getUpperChar(Short.parseShort(eepromWriteCounterField.getText())));
+		sb.append(getLowerChar(Short.parseShort(eepromWriteCounterField.getText())));
 		ParsedPage0 parsed = new ParsedPage0('0');
-		parsed.splitString(eepromStateField.getText() + "0" + eepromLastComField.getText() + "0" + eepromReadCounterField.getText() + "0" + eepromWriteCounterField.getText());
+		parsed.splitString(sb.toString());
 		view.getCommandSender().setNewDataPage0(parsed);
 		view.getCommandSender().sendNewDataPage0();
 	}
@@ -66,11 +76,6 @@ public class GuiController implements Initializable {
 		eepromLastComField.setText(String.valueOf(getNumericValue(debug.GetValue(1))));
 		eepromReadCounterField.setText(String.valueOf(getNumericValue(debug.GetValue(2))));
 		eepromWriteCounterField.setText(String.valueOf(getNumericValue(debug.GetValue(3))));
-		
-		//eepromStateField.setText(debug.GetValue(0));
-		//eepromLastComField.setText(debug.GetValue(1));
-		//eepromReadCounterField.setText(debug.GetValue(2));
-		//eepromWriteCounterField.setText(debug.GetValue(3));
 	}
 	
 	public char getLowerChar(short num) {
