@@ -15,7 +15,7 @@ public class Acceleration extends DataElem {
 		/*
 		 * Element names init
 		 */
-		for(int i = Channels.PAGE5_INDEX_START; i < Channels.PAGE7_INDEX_END; i++) {
+		for(int i = Channels.PAGE5_INDEX_START; i < Channels.PAGE7_INDEX_END + 1; i++) {
 			elementNames.add(Channels.getChannelNames().get(i));
 			elementValues.add("No value");
 			elementIsUpdated.add(false);

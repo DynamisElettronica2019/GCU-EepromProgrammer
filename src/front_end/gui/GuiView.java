@@ -72,8 +72,7 @@ public class GuiView extends View {
 
 	@Override
 	public void UpdateGearshift(Gearshift gear) {
-		// TODO Auto-generated method stub
-
+		controller.updateGear(gear);
 	}
 
 	@Override

@@ -30,7 +30,7 @@ public class DataElem extends Observable{
 			elementIsUpdated.set(elementMap.get(name), true);
 			updatedCounter++;
 		}
-		if (updatedCounter == elementSize) {
+		if (updatedCounter >= elementSize) {
 			updatedCounter = 0;
 			/*
 			 * Reset cycle

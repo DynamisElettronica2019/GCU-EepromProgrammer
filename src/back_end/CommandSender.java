@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import com.fazecast.jSerialComm.SerialPort;
 
 import back_end.parsed.ParsedPage0;
+import back_end.parsed.ParsedPage1;
+import back_end.parsed.ParsedPage2;
+import back_end.parsed.ParsedPage3;
+import back_end.parsed.ParsedPage4;
+import back_end.parsed.ParsedPage5;
+import back_end.parsed.ParsedPage6;
+import back_end.parsed.ParsedPage7;
 import back_end.sender.SenderPage0;
 import back_end.sender.SenderPage1;
 import back_end.sender.SenderPage2;
@@ -52,25 +59,56 @@ public class CommandSender {
 		}
 		receiver.send(string.toString());
 	}
+
+	
+	/*
+	 * Set new data to pages
+	 */
+	public void setNewDataPage0(ParsedPage0 parsed) {
+		data.update(parsed);
+	}
+	
+	public void setNewDataPage1(ParsedPage1 parsed) {
+		data.update(parsed);
+	}
+	
+	public void setNewDataPage2(ParsedPage2 parsed) {
+		data.update(parsed);
+	}
+	
+	public void setNewDataPage3(ParsedPage3 parsed) {
+		data.update(parsed);
+	}
+	
+	public void setNewDataPage4(ParsedPage4 parsed) {
+		data.update(parsed);
+	}
+	
+	public void setNewDataPage5(ParsedPage5 parsed) {
+		data.update(parsed);
+	}
+	
+	public void setNewDataPage6(ParsedPage6 parsed) {
+		data.update(parsed);
+	}
+	
+	public void setNewDataPage7(ParsedPage7 parsed) {
+		data.update(parsed);
+	}
 	
 	/*
 	 * Send debug page
 	 */
+	
 	public void sendNewDataPage0() {
 		SenderPage0 sender = new SenderPage0(receiver);
 		sender.Send(data.getDebug());
 	}
 	
 	/*
-	 * Send debug page
-	 */
-	public void setNewDataPage0(ParsedPage0 parsed) {
-		data.update(parsed);
-	}
-	
-	/*
 	 * Send acceleration page
 	 */
+	
 	public void sendNewDataPage1() {
 		SenderPage1 sender = new SenderPage1(receiver);
 		sender.Send(data.getGearshift());
