@@ -38,7 +38,7 @@ public class GuiController implements Initializable {
 	@FXML
 	private TextField DELAYField, UP_REBOUNDField, UP_BRAKEField, NT_CLUTCH_DELAYField, DOWN_TIME_CHECKField, UP_TIME_CHECKField, MAX_TRIESField;
 	@FXML
-	private TextField RPM_STARTField, RPM_ENDField, RAMP_TIMEField, RPM_LIMIT_1_2Field, RPM_LIMIT_2_3Field, RPM_LIMIT_3_4Field, RPM_LIMIT_4_5Field, SPEED_LIMIT_1_2Field;
+	private TextField RAMP_STARTField, RAMP_ENDField, RAMP_TIMEField, RPM_LIMIT_1_2Field, RPM_LIMIT_2_3Field, RPM_LIMIT_3_4Field, RPM_LIMIT_4_5Field, SPEED_LIMIT_1_2Field;
 	@FXML
 	private TextField SPEED_LIMIT_2_3Field, SPEED_LIMIT_3_4Field, SPEED_LIMIT_4_5Field, TPS_START_LIMITField; 
 	
@@ -190,10 +190,10 @@ public class GuiController implements Initializable {
 		 * Build page 5 and update
 		 */
 		StringBuilder sb5 = new StringBuilder();
-		sb5.append(getUpperChar(Short.parseShort(RPM_STARTField.getText())));
-		sb5.append(getLowerChar(Short.parseShort(RPM_STARTField.getText())));
-		sb5.append(getUpperChar(Short.parseShort(RPM_ENDField.getText())));
-		sb5.append(getLowerChar(Short.parseShort(RPM_ENDField.getText())));
+		sb5.append(getUpperChar(Short.parseShort(RAMP_STARTField.getText())));
+		sb5.append(getLowerChar(Short.parseShort(RAMP_STARTField.getText())));
+		sb5.append(getUpperChar(Short.parseShort(RAMP_ENDField.getText())));
+		sb5.append(getLowerChar(Short.parseShort(RAMP_ENDField.getText())));
 		sb5.append(getUpperChar(Short.parseShort(RAMP_TIMEField.getText())));
 		sb5.append(getLowerChar(Short.parseShort(RAMP_TIMEField.getText())));
 		sb5.append(getUpperChar(Short.parseShort(RPM_LIMIT_1_2Field.getText())));
@@ -282,8 +282,8 @@ public class GuiController implements Initializable {
 		Platform.runLater(new Runnable() {
             @Override
             public void run() {
-            	RPM_STARTField.setText(String.valueOf(getNumericValue(accel.GetValue(0))));
-            	RPM_ENDField.setText(String.valueOf(getNumericValue(accel.GetValue(1))));
+            	RAMP_STARTField.setText(String.valueOf(getNumericValue(accel.GetValue(0))));
+            	RAMP_ENDField.setText(String.valueOf(getNumericValue(accel.GetValue(1))));
             	RAMP_TIMEField.setText(String.valueOf(getNumericValue(accel.GetValue(2))));
             	RPM_LIMIT_1_2Field.setText(String.valueOf(getNumericValue(accel.GetValue(3))));
             	RPM_LIMIT_2_3Field.setText(String.valueOf(getNumericValue(accel.GetValue(4))));

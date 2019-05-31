@@ -15,16 +15,16 @@ public class ParsedPage6 extends Parsed {
 		 */
 		parsed.add(string.substring(Channels.SPEED_LIMIT_2_3_START, Channels.SPEED_LIMIT_2_3_END + 1));
 		parsedName.add(Channels.SPEED_LIMIT_2_3_NAME);
-		parsedMap.put(Channels.SPEED_LIMIT_2_3_NAME, 1);
+		parsedMap.put(Channels.SPEED_LIMIT_2_3_NAME, 0);
 		parsed.add(string.substring(Channels.SPEED_LIMIT_3_4_START, Channels.SPEED_LIMIT_3_4_END + 1));
 		parsedName.add(Channels.SPEED_LIMIT_3_4_NAME);
-		parsedMap.put(Channels.SPEED_LIMIT_3_4_NAME, 2);
+		parsedMap.put(Channels.SPEED_LIMIT_3_4_NAME, 1);
 		parsed.add(string.substring(Channels.SPEED_LIMIT_4_5_START, Channels.SPEED_LIMIT_4_5_END + 1));
 		parsedName.add(Channels.SPEED_LIMIT_4_5_NAME);
-		parsedMap.put(Channels.SPEED_LIMIT_4_5_NAME, 3);
+		parsedMap.put(Channels.SPEED_LIMIT_4_5_NAME, 2);
 		parsed.add(string.substring(Channels.TPS_START_LIMIT_START, Channels.TPS_START_LIMIT_END + 1));
 		parsedName.add(Channels.TPS_START_LIMIT_NAME);
-		parsedMap.put(Channels.TPS_START_LIMIT_NAME, 4);
+		parsedMap.put(Channels.TPS_START_LIMIT_NAME, 3);
 	}
 
 }
