@@ -170,6 +170,16 @@ public class GuiController implements Initializable {
 		 */
 	}
 	
+	@FXML
+	private void readAccel() {
+		
+	}
+	
+	@FXML
+	private void writeAccel() {
+		
+	}
+	
 	public void updateDebug(Debug debug) {
 		Platform.runLater(new Runnable() {
             @Override
