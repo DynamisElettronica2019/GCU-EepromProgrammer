@@ -27,9 +27,10 @@ public class Channels {
 	/*
 	 * Send costants
 	 */
+	public static final byte STRING_SIZE = 20;
 	public static final byte DATA_SIZE = 16;
 	public static final int HEADER_ID_START = 0;
-	public static final int HEADER_ID_END = 1;
+	public static final int HEADER_ID_END = 3;
 	
 	/*
 	 * Page 0 channel names
@@ -143,9 +144,9 @@ public class Channels {
 	 * Page 0 indexes
 	 */
 	public static final int EEPROM_STATE_START = 0;
-	public static final int EEPROM_STATE_END = 0;
+	public static final int EEPROM_STATE_END = 1;
 	public static final int EEPROM_LAST_COM_START = 2;
-	public static final int EEPROM_LAST_COM_END = 2;
+	public static final int EEPROM_LAST_COM_END = 3;
 	public static final int EEPROM_READ_COUNTER_START = 4;
 	public static final int EEPROM_READ_COUNTER_END = 5;
 	public static final int EEPROM_WRITE_COUNTER_START = 7;

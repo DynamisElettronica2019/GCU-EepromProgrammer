@@ -15,13 +15,13 @@ public class Receiver {
 	private char[] strRead; // Where read data are saved
 	private SerialPort comPort; // Com port object, null when closed
 	private int baudRate;
-	private String portName; // Ex: COM5
 	private int strIndex; // Primo free element of the array
 	private int startIndex; // Start of the string after finding "epr" index
 	private int closeIndex; // End of the string index, 19 bytes after start
 	private int state; // 0 for none, 1 for 'e', 2 for 'p', 3 for 'r' receive all 19 following bytes
 	private int dataCounter;
 	private String strToSend; // String to send to parser
+	private Thread portListener;
 	@SuppressWarnings("unused")
 	private CommandSender commandSender; // Command sender to connect frontend for sending
 	
@@ -37,7 +37,6 @@ public class Receiver {
 		strIndex = 0;
 		startIndex = -1;
 		baudRate = 115200;
-		portName = "COM5";	
 		state = 0;
 	}
 	
@@ -45,7 +44,7 @@ public class Receiver {
 	 * Send data through serial, string is the parameter
 	 */
 	public void send(String toSend) {
-		if(toSend.length() != (Channels.HEADER_ID_END - Channels.HEADER_ID_START + Channels.DATA_SIZE)) {
+		if(toSend.length() != (Channels.STRING_SIZE)) {
 			System.err.println("Sending message lenght error");
 		}
 		toSend = "epr"+toSend;
@@ -87,11 +86,12 @@ public class Receiver {
 						startIndex = strIndex;
 					}
 					else if (state == 3) { // Salva l'indice della parentesi aperta
-						if(dataCounter < 19) {
+						if(dataCounter < Channels.STRING_SIZE - 2) {
 							dataCounter++;
 							strIndex++;
 						}
 						else {
+							state = 0;
 							closeIndex = strIndex;
 							createString(); // Call string processing function
 						}	
@@ -119,22 +119,15 @@ public class Receiver {
 	 * Need to manage connection/disconnection?
 	 * Eventually use function comPort.closePort()
 	 */
-	public void Reader() {
-		comPort = SerialPort.getCommPort(portName);
-		Thread portListener = new Thread(new Runnable() {
+	public void Reader(String port) {
+		comPort = SerialPort.getCommPort(port);
+		portListener = new Thread(new Runnable() {
 			@Override
 			public void run() {
-				while(true){
-					if((comPort.isOpen() == false)) {
-						comPort.openPort(); //Open port
-						if((comPort.isOpen() == true)) {
-							System.out.println("Connected on "+portName);
-						}
-					}
-					try {
-						TimeUnit.SECONDS.sleep(2); //Wait
-					} catch (InterruptedException e) {
-						e.printStackTrace();
+				if((comPort.isOpen() == false)) {
+					comPort.openPort(); //Open port
+					if((comPort.isOpen() == true)) {
+						System.out.println("Connected on "+port);
 					}
 				}
 			}
@@ -145,14 +138,30 @@ public class Receiver {
 		comPort.addDataListener(listener);
 	}
 	
+	public void closePort() {
+		comPort.closePort();
+		portListener.interrupt();
+		System.out.println("Disconnected from port");
+	}
+	
 	/*
 	 * Create string to pass to parser, without "epr"
 	 */
 	private void createString() {
-		strToSend = String.valueOf(strRead, startIndex, closeIndex);
+		StringBuilder strToSend = new StringBuilder();
+		strToSend.append(strRead, startIndex, Channels.STRING_SIZE - 1);
 		strIndex = 0;
 		startIndex = -1;
 		closeIndex = -1;
-		parser.parseString(strToSend); // Pass string to parse to parser
+		dataCounter = 0;
+		parser.parseString(strToSend.toString()); // Pass string to parse to parser
+	}
+	
+	public SerialPort getComPort() {
+		return comPort;
+	}
+	
+	public void setComPort(SerialPort comPort) {
+		this.comPort = comPort;
 	}
 }

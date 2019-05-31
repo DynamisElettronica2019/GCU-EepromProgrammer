@@ -15,12 +15,17 @@ public class SenderPage7 extends Sender {
 
 	@Override
 	public void Send(DataElem element) {
-		ArrayList<String> strings = element.GetPageStrings(Channels.PAGE7_INDEX_START - Channels.PAGE5_INDEX_START, Channels.PAGE7_INDEX_END - Channels.PAGE5_INDEX_START);
+		ArrayList<String> strings = element.GetPageStrings(Channels.PAGE7_INDEX_START - Channels.PAGE5_INDEX_START, Channels.PAGE7_INDEX_END - Channels.PAGE5_INDEX_START + 1);
 		StringBuilder strToSend = new StringBuilder();
 		strToSend.append(Channels.WRITE_ID);
 		strToSend.append(Channels.PAGE_7_ID);
+		strToSend.append('0'); //CELL READING
+		strToSend.append((char) Channels.DATA_SIZE);
 		for(String str : strings) {
 			strToSend.append(str);
+		}
+		while(strToSend.toString().length() < Channels.STRING_SIZE) {
+			strToSend.append('0');
 		}
 		receiver.send(strToSend.toString());
 	}

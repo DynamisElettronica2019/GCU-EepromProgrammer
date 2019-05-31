@@ -25,7 +25,7 @@ public class GuiView extends View {
 	private AnchorPane anchorPane;
 	
 	public GuiView() throws IOException {
-		super();
+		//super();
 		System.out.println("Starting gui view..");
 		
 		//Set stage SX
@@ -72,20 +72,17 @@ public class GuiView extends View {
 
 	@Override
 	public void UpdateGearshift(Gearshift gear) {
-		// TODO Auto-generated method stub
-
+		controller.updateGear(gear);
 	}
 
 	@Override
 	public void UpdateAcceleration(Acceleration accel) {
-		// TODO Auto-generated method stub
-
+		controller.updateAccel(accel);
 	}
 
 	@Override
 	public void UpdateDebug(Debug debug) {
-		// TODO Auto-generated method stub
-		
+		controller.updateDebug(debug);
 	}
 
 }

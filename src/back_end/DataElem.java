@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Observable;
 
 import back_end.parsed.Parsed;
+import configuration.Channels;
 import front_end.View;
 
 public class DataElem extends Observable{
@@ -29,7 +30,7 @@ public class DataElem extends Observable{
 			elementIsUpdated.set(elementMap.get(name), true);
 			updatedCounter++;
 		}
-		if (updatedCounter == elementSize) {
+		if (updatedCounter >= elementSize) {
 			updatedCounter = 0;
 			/*
 			 * Reset cycle
@@ -51,6 +52,13 @@ public class DataElem extends Observable{
 			pageStrings.add(elementValues.get(i));
 		}
 		return pageStrings;
+	}
+	
+	/*
+	 * Return selected value
+	 */
+	public String GetValue(int index) {
+		return elementValues.get(index);
 	}
 
 	/*
