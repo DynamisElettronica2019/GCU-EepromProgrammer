@@ -5,12 +5,15 @@ import java.util.ResourceBundle;
 
 import com.fazecast.jSerialComm.SerialPort;
 
+import back_end.Acceleration;
 import back_end.Debug;
 import back_end.Gearshift;
 import back_end.parsed.ParsedPage0;
 import back_end.parsed.ParsedPage1;
 import back_end.parsed.ParsedPage2;
 import back_end.parsed.ParsedPage3;
+import back_end.parsed.ParsedPage5;
+import back_end.parsed.ParsedPage6;
 import configuration.Channels;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -34,6 +37,10 @@ public class GuiController implements Initializable {
 	private TextField DN_PUSHField, CLUTCHField, DN_REBOUNDField, DN_BRAKEField, UP_PUSH_1_2Field, UP_PUSH_2_3Field, UP_PUSH_3_4Field, UP_PUSH_4_5Field;
 	@FXML
 	private TextField DELAYField, UP_REBOUNDField, UP_BRAKEField, NT_CLUTCH_DELAYField, DOWN_TIME_CHECKField, UP_TIME_CHECKField, MAX_TRIESField;
+	@FXML
+	private TextField RPM_STARTField, RPM_ENDField, RAMP_TIMEField, RPM_LIMIT_1_2Field, RPM_LIMIT_2_3Field, RPM_LIMIT_3_4Field, RPM_LIMIT_4_5Field, SPEED_LIMIT_1_2Field;
+	@FXML
+	private TextField SPEED_LIMIT_2_3Field, SPEED_LIMIT_3_4Field, SPEED_LIMIT_4_5Field, TPS_START_LIMITField; 
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -172,12 +179,58 @@ public class GuiController implements Initializable {
 	
 	@FXML
 	private void readAccel() {
-		
+		view.getCommandSender().sendReadRequest(Channels.PAGE_5_ID);
+		view.getCommandSender().sendReadRequest(Channels.PAGE_6_ID);
+		view.getCommandSender().sendReadRequest(Channels.PAGE_7_ID);
 	}
 	
 	@FXML
 	private void writeAccel() {
+		/*
+		 * Build page 5 and update
+		 */
+		StringBuilder sb5 = new StringBuilder();
+		sb5.append(getUpperChar(Short.parseShort(RPM_STARTField.getText())));
+		sb5.append(getLowerChar(Short.parseShort(RPM_STARTField.getText())));
+		sb5.append(getUpperChar(Short.parseShort(RPM_ENDField.getText())));
+		sb5.append(getLowerChar(Short.parseShort(RPM_ENDField.getText())));
+		sb5.append(getUpperChar(Short.parseShort(RAMP_TIMEField.getText())));
+		sb5.append(getLowerChar(Short.parseShort(RAMP_TIMEField.getText())));
+		sb5.append(getUpperChar(Short.parseShort(RPM_LIMIT_1_2Field.getText())));
+		sb5.append(getLowerChar(Short.parseShort(RPM_LIMIT_1_2Field.getText())));
+		sb5.append(getUpperChar(Short.parseShort(RPM_LIMIT_2_3Field.getText())));
+		sb5.append(getLowerChar(Short.parseShort(RPM_LIMIT_2_3Field.getText())));
+		sb5.append(getUpperChar(Short.parseShort(RPM_LIMIT_3_4Field.getText())));
+		sb5.append(getLowerChar(Short.parseShort(RPM_LIMIT_3_4Field.getText())));
+		sb5.append(getUpperChar(Short.parseShort(RPM_LIMIT_4_5Field.getText())));
+		sb5.append(getLowerChar(Short.parseShort(RPM_LIMIT_4_5Field.getText())));
+		sb5.append(getUpperChar(Short.parseShort(SPEED_LIMIT_1_2Field.getText())));
+		sb5.append(getLowerChar(Short.parseShort(SPEED_LIMIT_1_2Field.getText())));
+		ParsedPage5 parsed5 = new ParsedPage5('5');
+		parsed5.splitString(sb5.toString());
+		view.getCommandSender().setNewDataPage5(parsed5);
+		view.getCommandSender().sendNewDataPage5();
 		
+		/*
+		 * Build page 6 and update
+		 */
+		StringBuilder sb6 = new StringBuilder();
+		sb6.append(getUpperChar(Short.parseShort(SPEED_LIMIT_2_3Field.getText())));
+		sb6.append(getLowerChar(Short.parseShort(SPEED_LIMIT_2_3Field.getText())));
+		sb6.append(getUpperChar(Short.parseShort(SPEED_LIMIT_3_4Field.getText())));
+		sb6.append(getLowerChar(Short.parseShort(SPEED_LIMIT_3_4Field.getText())));
+		sb6.append(getUpperChar(Short.parseShort(SPEED_LIMIT_4_5Field.getText())));
+		sb6.append(getLowerChar(Short.parseShort(SPEED_LIMIT_4_5Field.getText())));
+		sb6.append(getUpperChar(Short.parseShort(TPS_START_LIMITField.getText())));
+		sb6.append(getLowerChar(Short.parseShort(TPS_START_LIMITField.getText())));
+		ParsedPage6 parsed6 = new ParsedPage6('6');
+		parsed6.splitString(sb6.toString());
+		view.getCommandSender().setNewDataPage6(parsed6);
+		view.getCommandSender().sendNewDataPage6();
+		
+		/*
+		 * Build page 7 and update
+		 */
 	}
 	
 	public void updateDebug(Debug debug) {
@@ -221,6 +274,27 @@ public class GuiController implements Initializable {
         		DOWN_TIME_CHECKField.setText(String.valueOf(getNumericValue(gear.GetValue(20))));
         		UP_TIME_CHECKField.setText(String.valueOf(getNumericValue(gear.GetValue(21))));
         		MAX_TRIESField.setText(String.valueOf(getNumericValue(gear.GetValue(22))));
+            }
+        });
+	}
+	
+	public void updateAccel(Acceleration accel) {
+		Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+            	RPM_STARTField.setText(String.valueOf(getNumericValue(accel.GetValue(0))));
+            	RPM_ENDField.setText(String.valueOf(getNumericValue(accel.GetValue(1))));
+            	RAMP_TIMEField.setText(String.valueOf(getNumericValue(accel.GetValue(2))));
+            	RPM_LIMIT_1_2Field.setText(String.valueOf(getNumericValue(accel.GetValue(3))));
+            	RPM_LIMIT_2_3Field.setText(String.valueOf(getNumericValue(accel.GetValue(4))));
+            	RPM_LIMIT_3_4Field.setText(String.valueOf(getNumericValue(accel.GetValue(5))));
+            	RPM_LIMIT_4_5Field.setText(String.valueOf(getNumericValue(accel.GetValue(6))));
+            	SPEED_LIMIT_1_2Field.setText(String.valueOf(getNumericValue(accel.GetValue(7))));
+            	
+            	SPEED_LIMIT_2_3Field.setText(String.valueOf(getNumericValue(accel.GetValue(8))));
+            	SPEED_LIMIT_3_4Field.setText(String.valueOf(getNumericValue(accel.GetValue(9))));
+            	SPEED_LIMIT_4_5Field.setText(String.valueOf(getNumericValue(accel.GetValue(10))));
+            	TPS_START_LIMITField.setText(String.valueOf(getNumericValue(accel.GetValue(11))));
             }
         });
 	}
