@@ -52,10 +52,10 @@ public class CommandSender {
 		StringBuilder string = new StringBuilder();
 		string.append(Channels.READ_ID);
 		string.append(page);
-		string.append('0'); //CELL READING
+		string.append((char) 0); //CELL READING
 		string.append((char) Channels.DATA_SIZE);
 		for(int i=0; i<Channels.DATA_SIZE; i++) {
-			string.append('0');
+			string.append((char) 0);
 		}
 		receiver.send(string.toString());
 	}

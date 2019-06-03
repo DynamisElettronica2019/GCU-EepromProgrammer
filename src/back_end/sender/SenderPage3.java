@@ -19,13 +19,13 @@ public class SenderPage3 extends Sender {
 		StringBuilder strToSend = new StringBuilder();
 		strToSend.append(Channels.WRITE_ID);
 		strToSend.append(Channels.PAGE_3_ID);
-		strToSend.append('0'); //CELL READING
+		strToSend.append((char) 0); //CELL READING
 		strToSend.append((char) Channels.DATA_SIZE);
 		for(String str : strings) {
 			strToSend.append(str);
 		}
 		while(strToSend.toString().length() < Channels.STRING_SIZE) {
-			strToSend.append('0');
+			strToSend.append((char) 0);
 		}
 		receiver.send(strToSend.toString());
 	}

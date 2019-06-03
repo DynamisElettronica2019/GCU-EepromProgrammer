@@ -1,5 +1,7 @@
 package main;
 
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 import back_end.Data;
@@ -24,6 +26,8 @@ public class Main extends Application {
 		@SuppressWarnings("unused")
 		Channels config = new Channels();
 		
+		//Set std err to file
+		System.setErr(new PrintStream(new FileOutputStream("err.txt")));
 
 		/*
 		 * Create view

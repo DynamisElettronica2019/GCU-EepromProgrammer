@@ -310,14 +310,14 @@ public class GuiController implements Initializable {
 	/*
 	 * Get short from 2 byte string
 	 */
-	public short getNumericValue(String string) {
+	public int getNumericValue(String string) {
 		if(string.length() != 2) {
 			System.err.println("Field lenght conversion error");
 			
 			return 0;
 		}
 		else {
-			short number = 0;
+			int number = 0;
 			byte upper = (byte) string.charAt(0);
 			byte lower = (byte) string.charAt(1);
 
