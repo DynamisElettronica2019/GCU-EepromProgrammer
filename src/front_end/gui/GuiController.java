@@ -73,13 +73,24 @@ public class GuiController implements Initializable {
 	
 	@FXML
 	private void writeDebug() {
-		StringBuilder sb = new StringBuilder();
-		sb.append(sendEepromState(Short.parseShort(eepromStateField.getText())));
-		ParsedPage0 parsed = new ParsedPage0('0');
-		parsed.splitString(sb.toString());
-		view.getCommandSender().setNewDataPage0(parsed);
-		view.getCommandSender().sendNewDataPage0();
-		readDebug();
+		Thread sender = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				StringBuilder sb = new StringBuilder();
+				sb.append(sendEepromState(Short.parseShort(eepromStateField.getText())));
+				ParsedPage0 parsed = new ParsedPage0('0');
+				parsed.splitString(sb.toString());
+				view.getCommandSender().setNewDataPage0(parsed);
+				view.getCommandSender().sendNewDataPage0();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				readDebug();
+			}
+		});
+		sender.start();
 	}
 	
 	@FXML
