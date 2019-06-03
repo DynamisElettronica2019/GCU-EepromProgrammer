@@ -134,17 +134,17 @@ public class CommandSender {
 	 */
 	public void sendNewDataPage5() {
 		SenderPage5 sender = new SenderPage5(receiver);
-		sender.Send(data.getGearshift());
+		sender.Send(data.getAcceleration());
 	}
 	
 	public void sendNewDataPage6() {
 		SenderPage6 sender = new SenderPage6(receiver);
-		sender.Send(data.getGearshift());
+		sender.Send(data.getAcceleration());
 	}
 	
 	public void sendNewDataPage7() {
 		SenderPage7 sender = new SenderPage7(receiver);
-		sender.Send(data.getGearshift());
+		sender.Send(data.getAcceleration());
 	}
 	
 	/*
