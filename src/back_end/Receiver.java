@@ -49,6 +49,9 @@ public class Receiver {
 		}
 		else {
 			toSend = "epr"+toSend;
+			for(int i=0; i<toSend.length(); i++) {
+				System.out.println((int) toSend.charAt(i));
+			}
 			comPort.writeBytes(toSend.getBytes(), toSend.getBytes().length);
 		}
 	}

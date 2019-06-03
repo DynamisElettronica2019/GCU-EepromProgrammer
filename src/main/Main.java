@@ -27,7 +27,7 @@ public class Main extends Application {
 		Channels config = new Channels();
 		
 		//Set std err to file
-		System.setErr(new PrintStream(new FileOutputStream("err.txt")));
+		//System.setErr(new PrintStream(new FileOutputStream("err.txt")));
 
 		/*
 		 * Create view

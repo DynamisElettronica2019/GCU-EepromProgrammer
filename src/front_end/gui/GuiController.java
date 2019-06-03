@@ -74,15 +74,7 @@ public class GuiController implements Initializable {
 	@FXML
 	private void writeDebug() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(getUpperChar(Short.parseShort(eepromStateField.getText())));
-		sb.append(getLowerChar(Short.parseShort(eepromStateField.getText())));
-		sb.append(getUpperChar(Short.parseShort(eepromLastComField.getText())));
-		sb.append(getLowerChar(Short.parseShort(eepromLastComField.getText())));
-		sb.append(getUpperChar(Short.parseShort(eepromReadCounterField.getText())));
-		sb.append(getLowerChar(Short.parseShort(eepromReadCounterField.getText())));
-		sb.append('0');
-		sb.append(getUpperChar(Short.parseShort(eepromWriteCounterField.getText())));
-		sb.append(getLowerChar(Short.parseShort(eepromWriteCounterField.getText())));
+		sb.append(sendEepromState(Short.parseShort(eepromStateField.getText())));
 		ParsedPage0 parsed = new ParsedPage0('0');
 		parsed.splitString(sb.toString());
 		view.getCommandSender().setNewDataPage0(parsed);
@@ -91,90 +83,132 @@ public class GuiController implements Initializable {
 	
 	@FXML
 	private void readGear() {
-		view.getCommandSender().sendReadRequest(Channels.PAGE_1_ID);
-		view.getCommandSender().sendReadRequest(Channels.PAGE_2_ID);
-		view.getCommandSender().sendReadRequest(Channels.PAGE_3_ID);
-		view.getCommandSender().sendReadRequest(Channels.PAGE_4_ID);
+		Thread sender = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				view.getCommandSender().sendReadRequest(Channels.PAGE_1_ID);
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				view.getCommandSender().sendReadRequest(Channels.PAGE_2_ID);
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				view.getCommandSender().sendReadRequest(Channels.PAGE_3_ID);
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				view.getCommandSender().sendReadRequest(Channels.PAGE_4_ID);
+			}
+		});
+		sender.start();
 	}
 	
 	@FXML
 	private void writeGear() {
-		/*
-		 * Build page 1 and update
-		 */
-		StringBuilder sb1 = new StringBuilder();
-		sb1.append(getUpperChar(Short.parseShort(NT_PUSH_1_NField.getText())));
-		sb1.append(getLowerChar(Short.parseShort(NT_PUSH_1_NField.getText())));
-		sb1.append(getUpperChar(Short.parseShort(NT_CLUTCH_1_NField.getText())));
-		sb1.append(getLowerChar(Short.parseShort(NT_CLUTCH_1_NField.getText())));
-		sb1.append(getUpperChar(Short.parseShort(NT_REBOUND_1_NField.getText())));
-		sb1.append(getLowerChar(Short.parseShort(NT_REBOUND_1_NField.getText())));
-		sb1.append(getUpperChar(Short.parseShort(NT_BRAKE_1_NField.getText())));
-		sb1.append(getLowerChar(Short.parseShort(NT_BRAKE_1_NField.getText())));
-		sb1.append(getUpperChar(Short.parseShort(NT_PUSH_2_NField.getText())));
-		sb1.append(getLowerChar(Short.parseShort(NT_PUSH_2_NField.getText())));
-		sb1.append(getUpperChar(Short.parseShort(NT_CLUTCH_2_NField.getText())));
-		sb1.append(getLowerChar(Short.parseShort(NT_CLUTCH_2_NField.getText())));
-		sb1.append(getUpperChar(Short.parseShort(NT_REBOUND_2_NField.getText())));
-		sb1.append(getLowerChar(Short.parseShort(NT_REBOUND_2_NField.getText())));
-		sb1.append(getUpperChar(Short.parseShort(NT_BRAKE_2_NField.getText())));
-		sb1.append(getLowerChar(Short.parseShort(NT_BRAKE_2_NField.getText())));
-		ParsedPage1 parsed1 = new ParsedPage1('1');
-		parsed1.splitString(sb1.toString());
-		view.getCommandSender().setNewDataPage1(parsed1);
-		view.getCommandSender().sendNewDataPage1();
-		
-		/*
-		 * Build page 2 and update
-		 */
-		StringBuilder sb2 = new StringBuilder();
-		sb2.append(getUpperChar(Short.parseShort(DN_PUSHField.getText())));
-		sb2.append(getLowerChar(Short.parseShort(DN_PUSHField.getText())));
-		sb2.append(getUpperChar(Short.parseShort(CLUTCHField.getText())));
-		sb2.append(getLowerChar(Short.parseShort(CLUTCHField.getText())));
-		sb2.append(getUpperChar(Short.parseShort(DN_REBOUNDField.getText())));
-		sb2.append(getLowerChar(Short.parseShort(DN_REBOUNDField.getText())));
-		sb2.append(getUpperChar(Short.parseShort(DN_BRAKEField.getText())));
-		sb2.append(getLowerChar(Short.parseShort(DN_BRAKEField.getText())));
-		sb2.append(getUpperChar(Short.parseShort(UP_PUSH_1_2Field.getText())));
-		sb2.append(getLowerChar(Short.parseShort(UP_PUSH_1_2Field.getText())));
-		sb2.append(getUpperChar(Short.parseShort(UP_PUSH_2_3Field.getText())));
-		sb2.append(getLowerChar(Short.parseShort(UP_PUSH_2_3Field.getText())));
-		sb2.append(getUpperChar(Short.parseShort(UP_PUSH_3_4Field.getText())));
-		sb2.append(getLowerChar(Short.parseShort(UP_PUSH_3_4Field.getText())));
-		sb2.append(getUpperChar(Short.parseShort(UP_PUSH_4_5Field.getText())));
-		sb2.append(getLowerChar(Short.parseShort(UP_PUSH_4_5Field.getText())));
-		ParsedPage2 parsed2 = new ParsedPage2('2');
-		parsed2.splitString(sb2.toString());
-		view.getCommandSender().setNewDataPage2(parsed2);
-		view.getCommandSender().sendNewDataPage2();
-		
-		/*
-		 * Build page 3 and update
-		 */
-		StringBuilder sb3 = new StringBuilder();
-		sb3.append(getUpperChar(Short.parseShort(DELAYField.getText())));
-		sb3.append(getLowerChar(Short.parseShort(DELAYField.getText())));
-		sb3.append(getUpperChar(Short.parseShort(UP_REBOUNDField.getText())));
-		sb3.append(getLowerChar(Short.parseShort(UP_REBOUNDField.getText())));
-		sb3.append(getUpperChar(Short.parseShort(UP_BRAKEField.getText())));
-		sb3.append(getLowerChar(Short.parseShort(UP_BRAKEField.getText())));
-		sb3.append(getUpperChar(Short.parseShort(NT_CLUTCH_DELAYField.getText())));
-		sb3.append(getLowerChar(Short.parseShort(NT_CLUTCH_DELAYField.getText())));
-		sb3.append(getUpperChar(Short.parseShort(DOWN_TIME_CHECKField.getText())));
-		sb3.append(getLowerChar(Short.parseShort(DOWN_TIME_CHECKField.getText())));
-		sb3.append(getUpperChar(Short.parseShort(UP_TIME_CHECKField.getText())));
-		sb3.append(getLowerChar(Short.parseShort(UP_TIME_CHECKField.getText())));
-		sb3.append(getUpperChar(Short.parseShort(MAX_TRIESField.getText())));
-		sb3.append(getLowerChar(Short.parseShort(MAX_TRIESField.getText())));
-		ParsedPage3 parsed3 = new ParsedPage3('3');
-		parsed3.splitString(sb3.toString());
-		view.getCommandSender().setNewDataPage3(parsed3);
-		view.getCommandSender().sendNewDataPage3();
-		
-		/*
-		 * Build page 4 and update
-		 */
+		Thread sender = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				/*
+				 * Build page 1 and update
+				 */
+				StringBuilder sb1 = new StringBuilder();
+				sb1.append(getUpperChar(Short.parseShort(NT_PUSH_1_NField.getText())));
+				sb1.append(getLowerChar(Short.parseShort(NT_PUSH_1_NField.getText())));
+				sb1.append(getUpperChar(Short.parseShort(NT_CLUTCH_1_NField.getText())));
+				sb1.append(getLowerChar(Short.parseShort(NT_CLUTCH_1_NField.getText())));
+				sb1.append(getUpperChar(Short.parseShort(NT_REBOUND_1_NField.getText())));
+				sb1.append(getLowerChar(Short.parseShort(NT_REBOUND_1_NField.getText())));
+				sb1.append(getUpperChar(Short.parseShort(NT_BRAKE_1_NField.getText())));
+				sb1.append(getLowerChar(Short.parseShort(NT_BRAKE_1_NField.getText())));
+				sb1.append(getUpperChar(Short.parseShort(NT_PUSH_2_NField.getText())));
+				sb1.append(getLowerChar(Short.parseShort(NT_PUSH_2_NField.getText())));
+				sb1.append(getUpperChar(Short.parseShort(NT_CLUTCH_2_NField.getText())));
+				sb1.append(getLowerChar(Short.parseShort(NT_CLUTCH_2_NField.getText())));
+				sb1.append(getUpperChar(Short.parseShort(NT_REBOUND_2_NField.getText())));
+				sb1.append(getLowerChar(Short.parseShort(NT_REBOUND_2_NField.getText())));
+				sb1.append(getUpperChar(Short.parseShort(NT_BRAKE_2_NField.getText())));
+				sb1.append(getLowerChar(Short.parseShort(NT_BRAKE_2_NField.getText())));
+				ParsedPage1 parsed1 = new ParsedPage1('1');
+				parsed1.splitString(sb1.toString());
+				view.getCommandSender().setNewDataPage1(parsed1);
+				view.getCommandSender().sendNewDataPage1();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+				/*
+				 * Build page 2 and update
+				 */
+				StringBuilder sb2 = new StringBuilder();
+				sb2.append(getUpperChar(Short.parseShort(DN_PUSHField.getText())));
+				sb2.append(getLowerChar(Short.parseShort(DN_PUSHField.getText())));
+				sb2.append(getUpperChar(Short.parseShort(CLUTCHField.getText())));
+				sb2.append(getLowerChar(Short.parseShort(CLUTCHField.getText())));
+				sb2.append(getUpperChar(Short.parseShort(DN_REBOUNDField.getText())));
+				sb2.append(getLowerChar(Short.parseShort(DN_REBOUNDField.getText())));
+				sb2.append(getUpperChar(Short.parseShort(DN_BRAKEField.getText())));
+				sb2.append(getLowerChar(Short.parseShort(DN_BRAKEField.getText())));
+				sb2.append(getUpperChar(Short.parseShort(UP_PUSH_1_2Field.getText())));
+				sb2.append(getLowerChar(Short.parseShort(UP_PUSH_1_2Field.getText())));
+				sb2.append(getUpperChar(Short.parseShort(UP_PUSH_2_3Field.getText())));
+				sb2.append(getLowerChar(Short.parseShort(UP_PUSH_2_3Field.getText())));
+				sb2.append(getUpperChar(Short.parseShort(UP_PUSH_3_4Field.getText())));
+				sb2.append(getLowerChar(Short.parseShort(UP_PUSH_3_4Field.getText())));
+				sb2.append(getUpperChar(Short.parseShort(UP_PUSH_4_5Field.getText())));
+				sb2.append(getLowerChar(Short.parseShort(UP_PUSH_4_5Field.getText())));
+				ParsedPage2 parsed2 = new ParsedPage2('2');
+				parsed2.splitString(sb2.toString());
+				view.getCommandSender().setNewDataPage2(parsed2);
+				view.getCommandSender().sendNewDataPage2();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+				/*
+				 * Build page 3 and update
+				 */
+				StringBuilder sb3 = new StringBuilder();
+				sb3.append(getUpperChar(Short.parseShort(DELAYField.getText())));
+				sb3.append(getLowerChar(Short.parseShort(DELAYField.getText())));
+				sb3.append(getUpperChar(Short.parseShort(UP_REBOUNDField.getText())));
+				sb3.append(getLowerChar(Short.parseShort(UP_REBOUNDField.getText())));
+				sb3.append(getUpperChar(Short.parseShort(UP_BRAKEField.getText())));
+				sb3.append(getLowerChar(Short.parseShort(UP_BRAKEField.getText())));
+				sb3.append(getUpperChar(Short.parseShort(NT_CLUTCH_DELAYField.getText())));
+				sb3.append(getLowerChar(Short.parseShort(NT_CLUTCH_DELAYField.getText())));
+				sb3.append(getUpperChar(Short.parseShort(DOWN_TIME_CHECKField.getText())));
+				sb3.append(getLowerChar(Short.parseShort(DOWN_TIME_CHECKField.getText())));
+				sb3.append(getUpperChar(Short.parseShort(UP_TIME_CHECKField.getText())));
+				sb3.append(getLowerChar(Short.parseShort(UP_TIME_CHECKField.getText())));
+				sb3.append(getUpperChar(Short.parseShort(MAX_TRIESField.getText())));
+				sb3.append(getLowerChar(Short.parseShort(MAX_TRIESField.getText())));
+				ParsedPage3 parsed3 = new ParsedPage3('3');
+				parsed3.splitString(sb3.toString());
+				view.getCommandSender().setNewDataPage3(parsed3);
+				view.getCommandSender().sendNewDataPage3();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+				/*
+				 * Build page 4 and update
+				 */
+			}
+		});
+		sender.start();
 	}
 	
 	@FXML
@@ -186,58 +220,74 @@ public class GuiController implements Initializable {
 	
 	@FXML
 	private void writeAccel() {
-		/*
-		 * Build page 5 and update
-		 */
-		StringBuilder sb5 = new StringBuilder();
-		sb5.append(getUpperChar(Short.parseShort(RAMP_STARTField.getText())));
-		sb5.append(getLowerChar(Short.parseShort(RAMP_STARTField.getText())));
-		sb5.append(getUpperChar(Short.parseShort(RAMP_ENDField.getText())));
-		sb5.append(getLowerChar(Short.parseShort(RAMP_ENDField.getText())));
-		sb5.append(getUpperChar(Short.parseShort(RAMP_TIMEField.getText())));
-		sb5.append(getLowerChar(Short.parseShort(RAMP_TIMEField.getText())));
-		sb5.append(getUpperChar(Short.parseShort(RPM_LIMIT_1_2Field.getText())));
-		sb5.append(getLowerChar(Short.parseShort(RPM_LIMIT_1_2Field.getText())));
-		sb5.append(getUpperChar(Short.parseShort(RPM_LIMIT_2_3Field.getText())));
-		sb5.append(getLowerChar(Short.parseShort(RPM_LIMIT_2_3Field.getText())));
-		sb5.append(getUpperChar(Short.parseShort(RPM_LIMIT_3_4Field.getText())));
-		sb5.append(getLowerChar(Short.parseShort(RPM_LIMIT_3_4Field.getText())));
-		sb5.append(getUpperChar(Short.parseShort(RPM_LIMIT_4_5Field.getText())));
-		sb5.append(getLowerChar(Short.parseShort(RPM_LIMIT_4_5Field.getText())));
-		sb5.append(getUpperChar(Short.parseShort(SPEED_LIMIT_1_2Field.getText())));
-		sb5.append(getLowerChar(Short.parseShort(SPEED_LIMIT_1_2Field.getText())));
-		ParsedPage5 parsed5 = new ParsedPage5('5');
-		parsed5.splitString(sb5.toString());
-		view.getCommandSender().setNewDataPage5(parsed5);
-		view.getCommandSender().sendNewDataPage5();
-		
-		/*
-		 * Build page 6 and update
-		 */
-		StringBuilder sb6 = new StringBuilder();
-		sb6.append(getUpperChar(Short.parseShort(SPEED_LIMIT_2_3Field.getText())));
-		sb6.append(getLowerChar(Short.parseShort(SPEED_LIMIT_2_3Field.getText())));
-		sb6.append(getUpperChar(Short.parseShort(SPEED_LIMIT_3_4Field.getText())));
-		sb6.append(getLowerChar(Short.parseShort(SPEED_LIMIT_3_4Field.getText())));
-		sb6.append(getUpperChar(Short.parseShort(SPEED_LIMIT_4_5Field.getText())));
-		sb6.append(getLowerChar(Short.parseShort(SPEED_LIMIT_4_5Field.getText())));
-		sb6.append(getUpperChar(Short.parseShort(TPS_START_LIMITField.getText())));
-		sb6.append(getLowerChar(Short.parseShort(TPS_START_LIMITField.getText())));
-		ParsedPage6 parsed6 = new ParsedPage6('6');
-		parsed6.splitString(sb6.toString());
-		view.getCommandSender().setNewDataPage6(parsed6);
-		view.getCommandSender().sendNewDataPage6();
-		
-		/*
-		 * Build page 7 and update
-		 */
+		Thread sender = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				/*
+				 * Build page 5 and update
+				 */
+				StringBuilder sb5 = new StringBuilder();
+				sb5.append(getUpperChar(Short.parseShort(RAMP_STARTField.getText())));
+				sb5.append(getLowerChar(Short.parseShort(RAMP_STARTField.getText())));
+				sb5.append(getUpperChar(Short.parseShort(RAMP_ENDField.getText())));
+				sb5.append(getLowerChar(Short.parseShort(RAMP_ENDField.getText())));
+				sb5.append(getUpperChar(Short.parseShort(RAMP_TIMEField.getText())));
+				sb5.append(getLowerChar(Short.parseShort(RAMP_TIMEField.getText())));
+				sb5.append(getUpperChar(Short.parseShort(RPM_LIMIT_1_2Field.getText())));
+				sb5.append(getLowerChar(Short.parseShort(RPM_LIMIT_1_2Field.getText())));
+				sb5.append(getUpperChar(Short.parseShort(RPM_LIMIT_2_3Field.getText())));
+				sb5.append(getLowerChar(Short.parseShort(RPM_LIMIT_2_3Field.getText())));
+				sb5.append(getUpperChar(Short.parseShort(RPM_LIMIT_3_4Field.getText())));
+				sb5.append(getLowerChar(Short.parseShort(RPM_LIMIT_3_4Field.getText())));
+				sb5.append(getUpperChar(Short.parseShort(RPM_LIMIT_4_5Field.getText())));
+				sb5.append(getLowerChar(Short.parseShort(RPM_LIMIT_4_5Field.getText())));
+				sb5.append(getUpperChar(Short.parseShort(SPEED_LIMIT_1_2Field.getText())));
+				sb5.append(getLowerChar(Short.parseShort(SPEED_LIMIT_1_2Field.getText())));
+				ParsedPage5 parsed5 = new ParsedPage5('5');
+				parsed5.splitString(sb5.toString());
+				view.getCommandSender().setNewDataPage5(parsed5);
+				view.getCommandSender().sendNewDataPage5();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+				/*
+				 * Build page 6 and update
+				 */
+				StringBuilder sb6 = new StringBuilder();
+				sb6.append(getUpperChar(Short.parseShort(SPEED_LIMIT_2_3Field.getText())));
+				sb6.append(getLowerChar(Short.parseShort(SPEED_LIMIT_2_3Field.getText())));
+				sb6.append(getUpperChar(Short.parseShort(SPEED_LIMIT_3_4Field.getText())));
+				sb6.append(getLowerChar(Short.parseShort(SPEED_LIMIT_3_4Field.getText())));
+				sb6.append(getUpperChar(Short.parseShort(SPEED_LIMIT_4_5Field.getText())));
+				sb6.append(getLowerChar(Short.parseShort(SPEED_LIMIT_4_5Field.getText())));
+				sb6.append(getUpperChar(Short.parseShort(TPS_START_LIMITField.getText())));
+				sb6.append(getLowerChar(Short.parseShort(TPS_START_LIMITField.getText())));
+				ParsedPage6 parsed6 = new ParsedPage6('6');
+				parsed6.splitString(sb6.toString());
+				view.getCommandSender().setNewDataPage6(parsed6);
+				view.getCommandSender().sendNewDataPage6();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+				/*
+				 * Build page 7 and update
+				 */
+			}
+		});
+		sender.start();
 	}
 	
 	public void updateDebug(Debug debug) {
 		Platform.runLater(new Runnable() {
             @Override
             public void run() {
-        		eepromStateField.setText(String.valueOf(getNumericValue(debug.GetValue(0))));
+        		eepromStateField.setText(String.valueOf(getEepromState(debug.GetValue(0))));
         		eepromLastComField.setText(String.valueOf(getNumericValue(debug.GetValue(1))));
         		eepromReadCounterField.setText(String.valueOf(getNumericValue(debug.GetValue(2))));
         		eepromWriteCounterField.setText(String.valueOf(getNumericValue(debug.GetValue(3))));
@@ -307,6 +357,10 @@ public class GuiController implements Initializable {
 		return ((char)((num >> 8) & 0xFF));
 	}
 	
+	public char sendEepromState(short num) {
+		return ((char)num);
+	}
+	
 	/*
 	 * Get short from 2 byte string
 	 */
@@ -326,6 +380,17 @@ public class GuiController implements Initializable {
 
 
 			return number;
+		}
+	}
+	
+	private int getEepromState (String string) {
+		if(string.length() != 2) {
+			System.err.println("Field lenght conversion error");
+			return 0;
+		}
+		else {
+			byte upper = (byte) string.charAt(0);
+			return ((int)upper);
 		}
 	}
 }
