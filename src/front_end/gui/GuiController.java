@@ -79,6 +79,7 @@ public class GuiController implements Initializable {
 		parsed.splitString(sb.toString());
 		view.getCommandSender().setNewDataPage0(parsed);
 		view.getCommandSender().sendNewDataPage0();
+		readDebug();
 	}
 	
 	@FXML
@@ -206,6 +207,13 @@ public class GuiController implements Initializable {
 				/*
 				 * Build page 4 and update
 				 */
+				
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				readGear();
 			}
 		});
 		sender.start();
@@ -278,6 +286,13 @@ public class GuiController implements Initializable {
 				/*
 				 * Build page 7 and update
 				 */
+				
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				readAccel();
 			}
 		});
 		sender.start();
