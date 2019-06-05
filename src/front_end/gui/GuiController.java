@@ -415,8 +415,7 @@ public class GuiController implements Initializable {
 			return 0;
 		}
 		else {
-			byte upper = (byte) string.charAt(0);
-			return ((int)upper);
+			return ((int)string.charAt(0));
 		}
 	}
 }
