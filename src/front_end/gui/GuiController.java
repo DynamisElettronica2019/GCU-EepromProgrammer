@@ -437,7 +437,7 @@ public class GuiController implements Initializable {
 	}
 	
 	@FXML
-	private void readAcceleration() {
+	private void readAntistall() {
 		Thread sender = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -448,7 +448,7 @@ public class GuiController implements Initializable {
 	}
 	
 	@FXML
-	private void writeAcceleration() {
+	private void writeAntistall() {
 		Thread sender = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -473,7 +473,7 @@ public class GuiController implements Initializable {
 					e.printStackTrace();
 				}
 				
-				readAcceleration();
+				readAntistall();
 			}
 		});
 		sender.start();
