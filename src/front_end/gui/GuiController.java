@@ -40,7 +40,7 @@ public class GuiController implements Initializable {
 	@FXML
 	private TextField RAMP_STARTField, RAMP_ENDField, RAMP_TIMEField, RPM_LIMIT_1_2Field, RPM_LIMIT_2_3Field, RPM_LIMIT_3_4Field, RPM_LIMIT_4_5Field, SPEED_LIMIT_1_2Field;
 	@FXML
-	private TextField SPEED_LIMIT_2_3Field, SPEED_LIMIT_3_4Field, SPEED_LIMIT_4_5Field, TPS_START_LIMITField; 
+	private TextField SPEED_LIMIT_2_3Field, SPEED_LIMIT_3_4Field, SPEED_LIMIT_4_5Field, TPS_START_LIMITField, END_GEAR_ACField; 
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -284,6 +284,8 @@ public class GuiController implements Initializable {
 				sb6.append(getLowerChar(Short.parseShort(SPEED_LIMIT_4_5Field.getText())));
 				sb6.append(getUpperChar(Short.parseShort(TPS_START_LIMITField.getText())));
 				sb6.append(getLowerChar(Short.parseShort(TPS_START_LIMITField.getText())));
+				sb6.append(getUpperChar(Short.parseShort(END_GEAR_ACField.getText())));
+				sb6.append(getLowerChar(Short.parseShort(END_GEAR_ACField.getText())));
 				ParsedPage6 parsed6 = new ParsedPage6('6');
 				parsed6.splitString(sb6.toString());
 				view.getCommandSender().setNewDataPage6(parsed6);
@@ -371,6 +373,7 @@ public class GuiController implements Initializable {
             	SPEED_LIMIT_3_4Field.setText(String.valueOf(getNumericValue(accel.GetValue(9))));
             	SPEED_LIMIT_4_5Field.setText(String.valueOf(getNumericValue(accel.GetValue(10))));
             	TPS_START_LIMITField.setText(String.valueOf(getNumericValue(accel.GetValue(11))));
+            	END_GEAR_ACField.setText(String.valueOf(getNumericValue(accel.GetValue(12))));
             }
         });
 	}
