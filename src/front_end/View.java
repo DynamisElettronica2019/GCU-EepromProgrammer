@@ -4,6 +4,8 @@ package front_end;
 import java.io.IOException;
 
 import back_end.Acceleration;
+import back_end.Antistall;
+import back_end.Autocross;
 import back_end.CommandSender;
 import back_end.Debug;
 import back_end.Gearshift;
@@ -16,6 +18,8 @@ public abstract class View {
 	private DebugObserver debugObs;
 	private GearshiftObserver gearObs;
 	private AccelerationObserver accObs;
+	private AutocrossObserver autoObs;
+	private AntistallObserver antiObs;
 	
 	public View() {
 		debugObs = new DebugObserver(this);
@@ -54,6 +58,14 @@ public abstract class View {
 		return viewLoader;
 	}
 	
+	public AutocrossObserver getAutoObs() {
+		return autoObs;
+	}
+
+	public AntistallObserver getAntiObs() {
+		return antiObs;
+	}
+
 	/*
 	 * Implement for update of gearshift pages
 	 */
@@ -68,4 +80,14 @@ public abstract class View {
 	 * Implement for update of acceleration pages
 	 */
 	public abstract void UpdateAcceleration(Acceleration accel);
+	
+	/*
+	 * Implement for update of autocross pages
+	 */
+	public abstract void UpdateAutocross(Autocross auto);
+	
+	/*
+	 * Implement for update of antistall pages
+	 */
+	public abstract void UpdateAntistall(Antistall anti);
 }

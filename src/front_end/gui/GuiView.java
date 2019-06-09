@@ -3,6 +3,8 @@ package front_end.gui;
 import java.io.IOException;
 
 import back_end.Acceleration;
+import back_end.Antistall;
+import back_end.Autocross;
 import back_end.Debug;
 import back_end.Gearshift;
 import back_end.ViewLoader;
@@ -83,6 +85,16 @@ public class GuiView extends View {
 	@Override
 	public void UpdateDebug(Debug debug) {
 		controller.updateDebug(debug);
+	}
+	
+	@Override
+	public void UpdateAutocross(Autocross auto) {
+		controller.updateAutocross(auto);
+	}
+	
+	@Override
+	public void UpdateAntistall(Antistall anti) {
+		controller.updateAntistall(anti);
 	}
 
 }

@@ -13,5 +13,7 @@ public class ViewLoader {
 	public void load(){
 		data.getAcceleration().load();
 		data.getGearshift().load();
+		data.getAutocross();
+		data.getAntistall();
 	}
 }

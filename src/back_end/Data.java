@@ -21,11 +21,15 @@ public class Data {
 	private Debug debug;
 	private Gearshift gearshift;
 	private Acceleration acceleration;
+	private Autocross autocross;
+	private Antistall antistall;
 	
 	public Data(ArrayList<View> myViews) throws IOException {
 		debug = new Debug(myViews);
 		gearshift = new Gearshift(myViews);
 		acceleration = new Acceleration(myViews);
+		autocross = new Autocross(myViews);
+		antistall = new Antistall(myViews);
 		
 		ViewLoader vl = new ViewLoader(this);
 		for(View v : myViews) v.setViewLoader(vl);
@@ -56,6 +60,23 @@ public class Data {
 
 	public void setAcceleration(Acceleration acceleration) {
 		this.acceleration = acceleration;
+	}
+	
+
+	public Autocross getAutocross() {
+		return autocross;
+	}
+
+	public void setAutocross(Autocross autocross) {
+		this.autocross = autocross;
+	}
+
+	public Antistall getAntistall() {
+		return antistall;
+	}
+
+	public void setAntistall(Antistall antistall) {
+		this.antistall = antistall;
 	}
 
 	/*

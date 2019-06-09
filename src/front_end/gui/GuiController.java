@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 import com.fazecast.jSerialComm.SerialPort;
 
 import back_end.Acceleration;
+import back_end.Antistall;
+import back_end.Autocross;
 import back_end.Debug;
 import back_end.Gearshift;
 import back_end.parsed.ParsedPage0;
@@ -40,7 +42,8 @@ public class GuiController implements Initializable {
 	@FXML
 	private TextField RAMP_STARTField, RAMP_ENDField, RAMP_TIMEField, RPM_LIMIT_1_2Field, RPM_LIMIT_2_3Field, RPM_LIMIT_3_4Field, RPM_LIMIT_4_5Field, SPEED_LIMIT_1_2Field;
 	@FXML
-	private TextField SPEED_LIMIT_2_3Field, SPEED_LIMIT_3_4Field, SPEED_LIMIT_4_5Field, TPS_START_LIMITField, END_GEAR_ACField; 
+	private TextField SPEED_LIMIT_2_3Field, SPEED_LIMIT_3_4Field, SPEED_LIMIT_4_5Field, TPS_START_LIMITField, END_GEAR_ACField;
+	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -374,6 +377,39 @@ public class GuiController implements Initializable {
             	SPEED_LIMIT_4_5Field.setText(String.valueOf(getNumericValue(accel.GetValue(10))));
             	TPS_START_LIMITField.setText(String.valueOf(getNumericValue(accel.GetValue(11))));
             	END_GEAR_ACField.setText(String.valueOf(getNumericValue(accel.GetValue(12))));
+            }
+        });
+	}
+	
+	public void updateAutocross(Autocross auto) {
+		Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+            	RAMP_STARTField.setText(String.valueOf(getNumericValue(auto.GetValue(0))));
+            	RAMP_ENDField.setText(String.valueOf(getNumericValue(auto.GetValue(1))));
+            	RAMP_TIMEField.setText(String.valueOf(getNumericValue(auto.GetValue(2))));
+            	RPM_LIMIT_1_2Field.setText(String.valueOf(getNumericValue(auto.GetValue(3))));
+            	RPM_LIMIT_2_3Field.setText(String.valueOf(getNumericValue(auto.GetValue(4))));
+            	RPM_LIMIT_3_4Field.setText(String.valueOf(getNumericValue(auto.GetValue(5))));
+            	RPM_LIMIT_4_5Field.setText(String.valueOf(getNumericValue(auto.GetValue(6))));
+            	SPEED_LIMIT_1_2Field.setText(String.valueOf(getNumericValue(auto.GetValue(7))));
+            	
+            	SPEED_LIMIT_2_3Field.setText(String.valueOf(getNumericValue(auto.GetValue(8))));
+            	SPEED_LIMIT_3_4Field.setText(String.valueOf(getNumericValue(auto.GetValue(9))));
+            	SPEED_LIMIT_4_5Field.setText(String.valueOf(getNumericValue(auto.GetValue(10))));
+            	TPS_START_LIMITField.setText(String.valueOf(getNumericValue(auto.GetValue(11))));
+            	END_GEAR_ACField.setText(String.valueOf(getNumericValue(auto.GetValue(12))));
+            }
+        });
+	}
+	
+	public void updateAntistall(Antistall anti) {
+		Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+            	RAMP_STARTField.setText(String.valueOf(getNumericValue(anti.GetValue(0))));
+            	RAMP_ENDField.setText(String.valueOf(getNumericValue(anti.GetValue(1))));
+            	RAMP_TIMEField.setText(String.valueOf(getNumericValue(anti.GetValue(2))));
             }
         });
 	}
