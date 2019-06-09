@@ -5,12 +5,16 @@ import java.util.ArrayList;
 
 import back_end.parsed.ParsedPage0;
 import back_end.parsed.ParsedPage1;
+import back_end.parsed.ParsedPage10;
+import back_end.parsed.ParsedPage11;
 import back_end.parsed.ParsedPage2;
 import back_end.parsed.ParsedPage3;
 import back_end.parsed.ParsedPage4;
 import back_end.parsed.ParsedPage5;
 import back_end.parsed.ParsedPage6;
 import back_end.parsed.ParsedPage7;
+import back_end.parsed.ParsedPage8;
+import back_end.parsed.ParsedPage9;
 import front_end.View;
 
 public class Data {
@@ -87,5 +91,21 @@ public class Data {
 	
 	public void update(ParsedPage7 parsed) {
 		acceleration.UpdatePage(parsed);
+	}
+	
+	public void update(ParsedPage8 parsed) {
+		
+	}
+	
+	public void update(ParsedPage9 parsed) {
+		
+	}
+	
+	public void update(ParsedPage10 parsed) {
+		
+	}
+	
+	public void update(ParsedPage11 parsed) {
+		
 	}
 }

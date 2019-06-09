@@ -395,7 +395,7 @@ public class GuiController implements Initializable {
 	 */
 	public int getNumericValue(String string) {
 		if(string.length() != 2) {
-			System.err.println("Field lenght conversion error");
+			//System.err.println("Field lenght conversion error");
 			
 			return 0;
 		}

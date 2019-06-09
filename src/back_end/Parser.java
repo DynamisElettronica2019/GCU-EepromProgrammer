@@ -4,12 +4,16 @@ import java.util.ArrayList;
 
 import back_end.parsed.ParsedPage0;
 import back_end.parsed.ParsedPage1;
+import back_end.parsed.ParsedPage10;
+import back_end.parsed.ParsedPage11;
 import back_end.parsed.ParsedPage2;
 import back_end.parsed.ParsedPage3;
 import back_end.parsed.ParsedPage4;
 import back_end.parsed.ParsedPage5;
 import back_end.parsed.ParsedPage6;
 import back_end.parsed.ParsedPage7;
+import back_end.parsed.ParsedPage8;
+import back_end.parsed.ParsedPage9;
 import configuration.Channels;
 
 public class Parser {
@@ -24,18 +28,30 @@ public class Parser {
 		/*
 		 * Set gearshift pages
 		 */
-		pageIdentifier.add('0');
-		pageIdentifier.add('1');
-		pageIdentifier.add('2');
-		pageIdentifier.add('3');
-		pageIdentifier.add('4');
+		pageIdentifier.add((char) 0);
+		pageIdentifier.add((char) 1);
+		pageIdentifier.add((char) 2);
+		pageIdentifier.add((char) 3);
+		pageIdentifier.add((char) 4);
 		
 		/*
 		 * Set acceleration pages
 		 */
-		pageIdentifier.add('5');
-		pageIdentifier.add('6');
-		pageIdentifier.add('7');
+		pageIdentifier.add((char) 5);
+		pageIdentifier.add((char) 6);
+		pageIdentifier.add((char) 7);
+		
+		/*
+		 * Set autocross pages
+		 */
+		pageIdentifier.add((char) 8);
+		pageIdentifier.add((char) 9);
+		pageIdentifier.add((char) 10);
+		
+		/*
+		 * Set antistall pages
+		 */
+		pageIdentifier.add((char) 11);
 	}
 	
 	/*
@@ -97,6 +113,30 @@ public class Parser {
 				sb.delete(Channels.HEADER_ID_START, Channels.HEADER_ID_END);
 				parsed7.splitString(sb.toString());
 				data.update(parsed7);
+				break;
+			case 8:
+				ParsedPage8 parsed8 = new ParsedPage8('8');
+				sb.delete(Channels.HEADER_ID_START, Channels.HEADER_ID_END);
+				parsed8.splitString(sb.toString());
+				data.update(parsed8);
+				break;
+			case 9:
+				ParsedPage9 parsed9 = new ParsedPage9('9');
+				sb.delete(Channels.HEADER_ID_START, Channels.HEADER_ID_END);
+				parsed9.splitString(sb.toString());
+				data.update(parsed9);
+				break;
+			case 10:
+				ParsedPage10 parsed10 = new ParsedPage10((char) 10);
+				sb.delete(Channels.HEADER_ID_START, Channels.HEADER_ID_END);
+				parsed10.splitString(sb.toString());
+				data.update(parsed10);
+				break;
+			case 11:
+				ParsedPage11 parsed11 = new ParsedPage11((char) 11);
+				sb.delete(Channels.HEADER_ID_START, Channels.HEADER_ID_END);
+				parsed11.splitString(sb.toString());
+				data.update(parsed11);
 				break;
 			default:
 				System.err.println("Page reading error");
