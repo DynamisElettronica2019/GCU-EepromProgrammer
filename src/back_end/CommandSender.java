@@ -6,20 +6,28 @@ import com.fazecast.jSerialComm.SerialPort;
 
 import back_end.parsed.ParsedPage0;
 import back_end.parsed.ParsedPage1;
+import back_end.parsed.ParsedPage10;
+import back_end.parsed.ParsedPage11;
 import back_end.parsed.ParsedPage2;
 import back_end.parsed.ParsedPage3;
 import back_end.parsed.ParsedPage4;
 import back_end.parsed.ParsedPage5;
 import back_end.parsed.ParsedPage6;
 import back_end.parsed.ParsedPage7;
+import back_end.parsed.ParsedPage8;
+import back_end.parsed.ParsedPage9;
 import back_end.sender.SenderPage0;
 import back_end.sender.SenderPage1;
+import back_end.sender.SenderPage10;
+import back_end.sender.SenderPage11;
 import back_end.sender.SenderPage2;
 import back_end.sender.SenderPage3;
 import back_end.sender.SenderPage4;
 import back_end.sender.SenderPage5;
 import back_end.sender.SenderPage6;
 import back_end.sender.SenderPage7;
+import back_end.sender.SenderPage8;
+import back_end.sender.SenderPage9;
 import configuration.Channels;
 import front_end.View;
 
@@ -96,6 +104,22 @@ public class CommandSender {
 		data.update(parsed);
 	}
 	
+	public void setNewDataPage8(ParsedPage8 parsed) {
+		data.update(parsed);
+	}
+	
+	public void setNewDataPage9(ParsedPage9 parsed) {
+		data.update(parsed);
+	}
+	
+	public void setNewDataPage10(ParsedPage10 parsed) {
+		data.update(parsed);
+	}
+	
+	public void setNewDataPage11(ParsedPage11 parsed) {
+		data.update(parsed);
+	}
+	
 	/*
 	 * Send debug page
 	 */
@@ -106,7 +130,7 @@ public class CommandSender {
 	}
 	
 	/*
-	 * Send acceleration page
+	 * Send gearshift page
 	 */
 	
 	public void sendNewDataPage1() {
@@ -130,7 +154,7 @@ public class CommandSender {
 	}
 	
 	/*
-	 * Send gearshift page
+	 * Send acceleration page
 	 */
 	public void sendNewDataPage5() {
 		SenderPage5 sender = new SenderPage5(receiver);
@@ -144,6 +168,32 @@ public class CommandSender {
 	
 	public void sendNewDataPage7() {
 		SenderPage7 sender = new SenderPage7(receiver);
+		sender.Send(data.getAcceleration());
+	}
+	
+	/*
+	 * Send autocross page
+	 */
+	public void sendNewDataPage8() {
+		SenderPage8 sender = new SenderPage8(receiver);
+		sender.Send(data.getAcceleration());
+	}
+	
+	public void sendNewDataPage9() {
+		SenderPage9 sender = new SenderPage9(receiver);
+		sender.Send(data.getAcceleration());
+	}
+	
+	public void sendNewDataPage10() {
+		SenderPage10 sender = new SenderPage10(receiver);
+		sender.Send(data.getAcceleration());
+	}
+	
+	/*
+	 * Send antistall page
+	 */
+	public void sendNewDataPage11() {
+		SenderPage11 sender = new SenderPage11(receiver);
 		sender.Send(data.getAcceleration());
 	}
 	

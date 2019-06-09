@@ -12,10 +12,13 @@ import back_end.Debug;
 import back_end.Gearshift;
 import back_end.parsed.ParsedPage0;
 import back_end.parsed.ParsedPage1;
+import back_end.parsed.ParsedPage11;
 import back_end.parsed.ParsedPage2;
 import back_end.parsed.ParsedPage3;
 import back_end.parsed.ParsedPage5;
 import back_end.parsed.ParsedPage6;
+import back_end.parsed.ParsedPage8;
+import back_end.parsed.ParsedPage9;
 import configuration.Channels;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -43,6 +46,12 @@ public class GuiController implements Initializable {
 	private TextField RAMP_STARTField, RAMP_ENDField, RAMP_TIMEField, RPM_LIMIT_1_2Field, RPM_LIMIT_2_3Field, RPM_LIMIT_3_4Field, RPM_LIMIT_4_5Field, SPEED_LIMIT_1_2Field;
 	@FXML
 	private TextField SPEED_LIMIT_2_3Field, SPEED_LIMIT_3_4Field, SPEED_LIMIT_4_5Field, TPS_START_LIMITField, END_GEAR_ACField;
+	@FXML
+	private TextField RAMP_START_AUField, RAMP_END_AUField, RAMP_TIME_AUField, RPM_LIMIT_AU_1_2Field, RPM_LIMIT_AU_2_3Field, RPM_LIMIT_AU_3_4Field, RPM_LIMIT_AU_4_5Field, SPEED_LIMIT_AU_1_2Field;
+	@FXML
+	private TextField SPEED_LIMIT_AU_2_3Field, SPEED_LIMIT_AU_3_4Field, SPEED_LIMIT_AU_4_5Field, TPS_START_LIMIT_AUField, END_GEAR_AUField;
+	@FXML
+	private TextField RPM_THRESHOLDField, DELTA_RPM_THRESHOLDField, GEAR_THRESHOLDField;
 	
 	
 	@Override
@@ -235,9 +244,25 @@ public class GuiController implements Initializable {
 	
 	@FXML
 	private void readAccel() {
-		view.getCommandSender().sendReadRequest(Channels.PAGE_5_ID);
-		view.getCommandSender().sendReadRequest(Channels.PAGE_6_ID);
-		view.getCommandSender().sendReadRequest(Channels.PAGE_7_ID);
+		Thread sender = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				view.getCommandSender().sendReadRequest(Channels.PAGE_5_ID);
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				view.getCommandSender().sendReadRequest(Channels.PAGE_6_ID);
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				view.getCommandSender().sendReadRequest(Channels.PAGE_7_ID);
+			}
+		});
+		sender.start();
 	}
 	
 	@FXML
@@ -314,6 +339,146 @@ public class GuiController implements Initializable {
 		sender.start();
 	}
 	
+	@FXML
+	private void readAutocross() {
+		Thread sender = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				view.getCommandSender().sendReadRequest(Channels.PAGE_8_ID);
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				view.getCommandSender().sendReadRequest(Channels.PAGE_9_ID);
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				view.getCommandSender().sendReadRequest(Channels.PAGE_10_ID);
+			}
+		});
+		sender.start();
+	}
+	
+	@FXML
+	private void writeAutocross() {
+		Thread sender = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				/*
+				 * Build page 8 and update
+				 */
+				StringBuilder sb8 = new StringBuilder();
+				sb8.append(getUpperChar(Short.parseShort(RAMP_START_AUField.getText())));
+				sb8.append(getLowerChar(Short.parseShort(RAMP_START_AUField.getText())));
+				sb8.append(getUpperChar(Short.parseShort(RAMP_END_AUField.getText())));
+				sb8.append(getLowerChar(Short.parseShort(RAMP_END_AUField.getText())));
+				sb8.append(getUpperChar(Short.parseShort(RAMP_TIME_AUField.getText())));
+				sb8.append(getLowerChar(Short.parseShort(RAMP_TIME_AUField.getText())));
+				sb8.append(getUpperChar(Short.parseShort(RPM_LIMIT_AU_1_2Field.getText())));
+				sb8.append(getLowerChar(Short.parseShort(RPM_LIMIT_AU_1_2Field.getText())));
+				sb8.append(getUpperChar(Short.parseShort(RPM_LIMIT_AU_2_3Field.getText())));
+				sb8.append(getLowerChar(Short.parseShort(RPM_LIMIT_AU_2_3Field.getText())));
+				sb8.append(getUpperChar(Short.parseShort(RPM_LIMIT_AU_3_4Field.getText())));
+				sb8.append(getLowerChar(Short.parseShort(RPM_LIMIT_AU_3_4Field.getText())));
+				sb8.append(getUpperChar(Short.parseShort(RPM_LIMIT_AU_4_5Field.getText())));
+				sb8.append(getLowerChar(Short.parseShort(RPM_LIMIT_AU_4_5Field.getText())));
+				sb8.append(getUpperChar(Short.parseShort(SPEED_LIMIT_AU_1_2Field.getText())));
+				sb8.append(getLowerChar(Short.parseShort(SPEED_LIMIT_AU_1_2Field.getText())));
+				ParsedPage8 parsed8 = new ParsedPage8('8');
+				parsed8.splitString(sb8.toString());
+				view.getCommandSender().setNewDataPage8(parsed8);
+				view.getCommandSender().sendNewDataPage8();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+				/*
+				 * Build page 9 and update
+				 */
+				StringBuilder sb9 = new StringBuilder();
+				sb9.append(getUpperChar(Short.parseShort(SPEED_LIMIT_AU_2_3Field.getText())));
+				sb9.append(getLowerChar(Short.parseShort(SPEED_LIMIT_AU_2_3Field.getText())));
+				sb9.append(getUpperChar(Short.parseShort(SPEED_LIMIT_AU_3_4Field.getText())));
+				sb9.append(getLowerChar(Short.parseShort(SPEED_LIMIT_AU_3_4Field.getText())));
+				sb9.append(getUpperChar(Short.parseShort(SPEED_LIMIT_AU_4_5Field.getText())));
+				sb9.append(getLowerChar(Short.parseShort(SPEED_LIMIT_AU_4_5Field.getText())));
+				sb9.append(getUpperChar(Short.parseShort(TPS_START_LIMIT_AUField.getText())));
+				sb9.append(getLowerChar(Short.parseShort(TPS_START_LIMIT_AUField.getText())));
+				sb9.append(getUpperChar(Short.parseShort(END_GEAR_AUField.getText())));
+				sb9.append(getLowerChar(Short.parseShort(END_GEAR_AUField.getText())));
+				ParsedPage9 parsed9 = new ParsedPage9('9');
+				parsed9.splitString(sb9.toString());
+				view.getCommandSender().setNewDataPage9(parsed9);
+				view.getCommandSender().sendNewDataPage9();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+				/*
+				 * Build page 10 and update
+				 */
+				
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				readAutocross();
+			}
+		});
+		sender.start();
+	}
+	
+	@FXML
+	private void readAcceleration() {
+		Thread sender = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				view.getCommandSender().sendReadRequest(Channels.PAGE_11_ID);
+			}
+		});
+		sender.start();
+	}
+	
+	@FXML
+	private void writeAcceleration() {
+		Thread sender = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				/*
+				 * Build page 11 and update
+				 */
+				StringBuilder sb11 = new StringBuilder();
+				sb11.append(getUpperChar(Short.parseShort(RPM_THRESHOLDField.getText())));
+				sb11.append(getLowerChar(Short.parseShort(RPM_THRESHOLDField.getText())));
+				sb11.append(getUpperChar(Short.parseShort(DELTA_RPM_THRESHOLDField.getText())));
+				sb11.append(getLowerChar(Short.parseShort(DELTA_RPM_THRESHOLDField.getText())));
+				sb11.append(getUpperChar(Short.parseShort(GEAR_THRESHOLDField.getText())));
+				sb11.append(getLowerChar(Short.parseShort(GEAR_THRESHOLDField.getText())));
+				ParsedPage11 parsed11 = new ParsedPage11((char) 11);
+				parsed11.splitString(sb11.toString());
+				view.getCommandSender().setNewDataPage11(parsed11);
+				view.getCommandSender().sendNewDataPage11();
+				
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+				readAcceleration();
+			}
+		});
+		sender.start();
+	}
+	
 	public void updateDebug(Debug debug) {
 		Platform.runLater(new Runnable() {
             @Override
@@ -385,20 +550,20 @@ public class GuiController implements Initializable {
 		Platform.runLater(new Runnable() {
             @Override
             public void run() {
-            	RAMP_STARTField.setText(String.valueOf(getNumericValue(auto.GetValue(0))));
-            	RAMP_ENDField.setText(String.valueOf(getNumericValue(auto.GetValue(1))));
-            	RAMP_TIMEField.setText(String.valueOf(getNumericValue(auto.GetValue(2))));
-            	RPM_LIMIT_1_2Field.setText(String.valueOf(getNumericValue(auto.GetValue(3))));
-            	RPM_LIMIT_2_3Field.setText(String.valueOf(getNumericValue(auto.GetValue(4))));
-            	RPM_LIMIT_3_4Field.setText(String.valueOf(getNumericValue(auto.GetValue(5))));
-            	RPM_LIMIT_4_5Field.setText(String.valueOf(getNumericValue(auto.GetValue(6))));
-            	SPEED_LIMIT_1_2Field.setText(String.valueOf(getNumericValue(auto.GetValue(7))));
+            	RAMP_START_AUField.setText(String.valueOf(getNumericValue(auto.GetValue(0))));
+            	RAMP_END_AUField.setText(String.valueOf(getNumericValue(auto.GetValue(1))));
+            	RAMP_TIME_AUField.setText(String.valueOf(getNumericValue(auto.GetValue(2))));
+            	RPM_LIMIT_AU_1_2Field.setText(String.valueOf(getNumericValue(auto.GetValue(3))));
+            	RPM_LIMIT_AU_2_3Field.setText(String.valueOf(getNumericValue(auto.GetValue(4))));
+            	RPM_LIMIT_AU_3_4Field.setText(String.valueOf(getNumericValue(auto.GetValue(5))));
+            	RPM_LIMIT_AU_4_5Field.setText(String.valueOf(getNumericValue(auto.GetValue(6))));
+            	SPEED_LIMIT_AU_1_2Field.setText(String.valueOf(getNumericValue(auto.GetValue(7))));
             	
-            	SPEED_LIMIT_2_3Field.setText(String.valueOf(getNumericValue(auto.GetValue(8))));
-            	SPEED_LIMIT_3_4Field.setText(String.valueOf(getNumericValue(auto.GetValue(9))));
-            	SPEED_LIMIT_4_5Field.setText(String.valueOf(getNumericValue(auto.GetValue(10))));
-            	TPS_START_LIMITField.setText(String.valueOf(getNumericValue(auto.GetValue(11))));
-            	END_GEAR_ACField.setText(String.valueOf(getNumericValue(auto.GetValue(12))));
+            	SPEED_LIMIT_AU_2_3Field.setText(String.valueOf(getNumericValue(auto.GetValue(8))));
+            	SPEED_LIMIT_AU_3_4Field.setText(String.valueOf(getNumericValue(auto.GetValue(9))));
+            	SPEED_LIMIT_AU_4_5Field.setText(String.valueOf(getNumericValue(auto.GetValue(10))));
+            	TPS_START_LIMIT_AUField.setText(String.valueOf(getNumericValue(auto.GetValue(11))));
+            	END_GEAR_AUField.setText(String.valueOf(getNumericValue(auto.GetValue(12))));
             }
         });
 	}
@@ -407,9 +572,9 @@ public class GuiController implements Initializable {
 		Platform.runLater(new Runnable() {
             @Override
             public void run() {
-            	RAMP_STARTField.setText(String.valueOf(getNumericValue(anti.GetValue(0))));
-            	RAMP_ENDField.setText(String.valueOf(getNumericValue(anti.GetValue(1))));
-            	RAMP_TIMEField.setText(String.valueOf(getNumericValue(anti.GetValue(2))));
+            	RPM_THRESHOLDField.setText(String.valueOf(getNumericValue(anti.GetValue(0))));
+            	DELTA_RPM_THRESHOLDField.setText(String.valueOf(getNumericValue(anti.GetValue(1))));
+            	GEAR_THRESHOLDField.setText(String.valueOf(getNumericValue(anti.GetValue(2))));
             }
         });
 	}
