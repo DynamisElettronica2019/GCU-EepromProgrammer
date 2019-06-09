@@ -588,7 +588,7 @@ public class GuiController implements Initializable {
 	}
 	
 	public char sendEepromState(short num) {
-		return ((char)num);
+		return ((char)(num & 0xFF));
 	}
 	
 	/*
@@ -619,7 +619,8 @@ public class GuiController implements Initializable {
 			return 0;
 		}
 		else {
-			return ((int)string.charAt(0));
+			char c = string.charAt(0);
+			return ((int)c);
 		}
 	}
 }
