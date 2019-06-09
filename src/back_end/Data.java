@@ -115,18 +115,18 @@ public class Data {
 	}
 	
 	public void update(ParsedPage8 parsed) {
-		
+		autocross.UpdatePage(parsed);
 	}
 	
 	public void update(ParsedPage9 parsed) {
-		
+		autocross.UpdatePage(parsed);
 	}
 	
 	public void update(ParsedPage10 parsed) {
-		
+		autocross.UpdatePage(parsed);
 	}
 	
 	public void update(ParsedPage11 parsed) {
-		
+		antistall.UpdatePage(parsed);
 	}
 }
