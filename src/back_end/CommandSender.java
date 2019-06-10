@@ -194,7 +194,7 @@ public class CommandSender {
 	 */
 	public void sendNewDataPage11() {
 		SenderPage11 sender = new SenderPage11(receiver);
-		sender.Send(data.getAcceleration());
+		sender.Send(data.getAntistall());
 	}
 	
 	/*

@@ -456,12 +456,12 @@ public class GuiController implements Initializable {
 				 * Build page 11 and update
 				 */
 				StringBuilder sb11 = new StringBuilder();
-				sb11.append(getUpperChar(Short.parseShort(RPM_THRESHOLDField.getText())));
-				sb11.append(getLowerChar(Short.parseShort(RPM_THRESHOLDField.getText())));
-				sb11.append(getUpperChar(Short.parseShort(DELTA_RPM_TRESHOLDField.getText())));
-				sb11.append(getLowerChar(Short.parseShort(DELTA_RPM_TRESHOLDField.getText())));
-				sb11.append(getUpperChar(Short.parseShort(GEAR_TRESHOLDField.getText())));
-				sb11.append(getLowerChar(Short.parseShort(GEAR_TRESHOLDField.getText())));
+				sb11.append(getUpperChar(Integer.parseInt(RPM_THRESHOLDField.getText())));
+				sb11.append(getLowerChar(Integer.parseInt(RPM_THRESHOLDField.getText())));
+				sb11.append(getUpperChar(Integer.parseInt(DELTA_RPM_TRESHOLDField.getText())));
+				sb11.append(getLowerChar(Integer.parseInt(DELTA_RPM_TRESHOLDField.getText())));
+				sb11.append(getUpperChar(Integer.parseInt(GEAR_TRESHOLDField.getText())));
+				sb11.append(getLowerChar(Integer.parseInt(GEAR_TRESHOLDField.getText())));
 				ParsedPage11 parsed11 = new ParsedPage11((char) 11);
 				parsed11.splitString(sb11.toString());
 				view.getCommandSender().setNewDataPage11(parsed11);
@@ -579,15 +579,15 @@ public class GuiController implements Initializable {
         });
 	}
 	
-	public char getLowerChar(short num) {
+	public char getLowerChar(int num) {
 		return ((char)(num & 0xFF));
 	}
 	
-	public char getUpperChar(short num) {
+	public char getUpperChar(int num) {
 		return ((char)((num >> 8) & 0xFF));
 	}
 	
-	public char sendEepromState(short num) {
+	public char sendEepromState(int num) {
 		return ((char)(num & 0xFF));
 	}
 	
@@ -596,7 +596,7 @@ public class GuiController implements Initializable {
 	 */
 	public int getNumericValue(String string) {
 		if(string.length() != 2) {
-			//System.err.println("Field lenght conversion error");
+			System.err.println("Field lenght conversion error");
 			
 			return 0;
 		}

@@ -1,5 +1,6 @@
 package back_end;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -49,7 +50,11 @@ public class Receiver {
 		}
 		else {
 			toSend = "epr"+toSend;
-			comPort.writeBytes(toSend.getBytes(), toSend.getBytes().length);
+			byte[] toSendBytes = new byte[Channels.STRING_SIZE];
+			for(int i=0; i<Channels.STRING_SIZE; i++) {
+				toSendBytes[i]= (byte)((int)(toSend.charAt(i) & 0xFF));
+			}
+			comPort.writeBytes(toSendBytes, toSendBytes.length);
 		}
 	}
 	

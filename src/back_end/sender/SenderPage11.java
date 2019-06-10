@@ -15,10 +15,10 @@ public class SenderPage11 extends Sender {
 
 	@Override
 	public void Send(DataElem element) {
-		ArrayList<String> strings = element.GetPageStrings(Channels.PAGE10_INDEX_START - Channels.PAGE10_INDEX_START, Channels.PAGE10_INDEX_END - Channels.PAGE10_INDEX_START + 1);
+		ArrayList<String> strings = element.GetPageStrings(Channels.PAGE11_INDEX_START - Channels.PAGE11_INDEX_START, Channels.PAGE11_INDEX_END - Channels.PAGE11_INDEX_START + 1);
 		StringBuilder strToSend = new StringBuilder();
 		strToSend.append(Channels.WRITE_ID);
-		strToSend.append(Channels.PAGE_10_ID);
+		strToSend.append(Channels.PAGE_11_ID);
 		strToSend.append((char) 0); //CELL READING
 		strToSend.append((char) Channels.DATA_SIZE);
 		for(String str : strings) {
