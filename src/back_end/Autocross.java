@@ -10,7 +10,7 @@ public class Autocross extends DataElem {
 	public Autocross(ArrayList<View> myViews) {
 		super(myViews);
 		elementSize = Channels.AUTOCROSS_SIZE;
-		for(View v: myViews) this.addObserver(v.getAccObs());
+		for(View v: myViews) this.addObserver(v.getAutoObs());
 		
 		/*
 		 * Element names init

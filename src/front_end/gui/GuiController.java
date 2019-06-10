@@ -51,7 +51,7 @@ public class GuiController implements Initializable {
 	@FXML
 	private TextField SPEED_LIMIT_AU_2_3Field, SPEED_LIMIT_AU_3_4Field, SPEED_LIMIT_AU_4_5Field, TPS_START_LIMIT_AUField, END_GEAR_AUField;
 	@FXML
-	private TextField RPM_THRESHOLDField, DELTA_RPM_THRESHOLDField, GEAR_THRESHOLDField;
+	private TextField RPM_THRESHOLDField, DELTA_RPM_TRESHOLDField, GEAR_TRESHOLDField;
 	
 	
 	@Override
@@ -458,10 +458,10 @@ public class GuiController implements Initializable {
 				StringBuilder sb11 = new StringBuilder();
 				sb11.append(getUpperChar(Short.parseShort(RPM_THRESHOLDField.getText())));
 				sb11.append(getLowerChar(Short.parseShort(RPM_THRESHOLDField.getText())));
-				sb11.append(getUpperChar(Short.parseShort(DELTA_RPM_THRESHOLDField.getText())));
-				sb11.append(getLowerChar(Short.parseShort(DELTA_RPM_THRESHOLDField.getText())));
-				sb11.append(getUpperChar(Short.parseShort(GEAR_THRESHOLDField.getText())));
-				sb11.append(getLowerChar(Short.parseShort(GEAR_THRESHOLDField.getText())));
+				sb11.append(getUpperChar(Short.parseShort(DELTA_RPM_TRESHOLDField.getText())));
+				sb11.append(getLowerChar(Short.parseShort(DELTA_RPM_TRESHOLDField.getText())));
+				sb11.append(getUpperChar(Short.parseShort(GEAR_TRESHOLDField.getText())));
+				sb11.append(getLowerChar(Short.parseShort(GEAR_TRESHOLDField.getText())));
 				ParsedPage11 parsed11 = new ParsedPage11((char) 11);
 				parsed11.splitString(sb11.toString());
 				view.getCommandSender().setNewDataPage11(parsed11);
@@ -573,8 +573,8 @@ public class GuiController implements Initializable {
             @Override
             public void run() {
             	RPM_THRESHOLDField.setText(String.valueOf(getNumericValue(anti.GetValue(0))));
-            	DELTA_RPM_THRESHOLDField.setText(String.valueOf(getNumericValue(anti.GetValue(1))));
-            	GEAR_THRESHOLDField.setText(String.valueOf(getNumericValue(anti.GetValue(2))));
+            	DELTA_RPM_TRESHOLDField.setText(String.valueOf(getNumericValue(anti.GetValue(1))));
+            	GEAR_TRESHOLDField.setText(String.valueOf(getNumericValue(anti.GetValue(2))));
             }
         });
 	}
@@ -620,7 +620,7 @@ public class GuiController implements Initializable {
 		}
 		else {
 			char c = string.charAt(0);
-			return ((int)c);
+			return ((short)c & 0xFF);
 		}
 	}
 }

@@ -25,6 +25,8 @@ public abstract class View {
 		debugObs = new DebugObserver(this);
 		gearObs = new GearshiftObserver(this);
 		accObs = new AccelerationObserver(this);
+		autoObs = new AutocrossObserver(this);
+		antiObs = new AntistallObserver(this);
 	}
 	
 	/*

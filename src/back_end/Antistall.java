@@ -10,7 +10,7 @@ public class Antistall extends DataElem {
 	public Antistall(ArrayList<View> myViews) {
 		super(myViews);
 		elementSize = Channels.ANTISTALL_SIZE;
-		for(View v: myViews) this.addObserver(v.getAccObs());
+		for(View v: myViews) this.addObserver(v.getAntiObs());
 		
 		/*
 		 * Element names init
