@@ -50,8 +50,8 @@ public class Receiver {
 		}
 		else {
 			toSend = "epr"+toSend;
-			byte[] toSendBytes = new byte[Channels.STRING_SIZE];
-			for(int i=0; i<Channels.STRING_SIZE; i++) {
+			byte[] toSendBytes = new byte[Channels.STRING_SIZE+3];
+			for(int i=0; i<Channels.STRING_SIZE+3; i++) {
 				toSendBytes[i]= (byte)((int)(toSend.charAt(i) & 0xFF));
 			}
 			comPort.writeBytes(toSendBytes, toSendBytes.length);
