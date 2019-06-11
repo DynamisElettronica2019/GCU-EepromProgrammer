@@ -176,17 +176,17 @@ public class CommandSender {
 	 */
 	public void sendNewDataPage8() {
 		SenderPage8 sender = new SenderPage8(receiver);
-		sender.Send(data.getAcceleration());
+		sender.Send(data.getAutocross());
 	}
 	
 	public void sendNewDataPage9() {
 		SenderPage9 sender = new SenderPage9(receiver);
-		sender.Send(data.getAcceleration());
+		sender.Send(data.getAutocross());
 	}
 	
 	public void sendNewDataPage10() {
 		SenderPage10 sender = new SenderPage10(receiver);
-		sender.Send(data.getAcceleration());
+		sender.Send(data.getAutocross());
 	}
 	
 	/*

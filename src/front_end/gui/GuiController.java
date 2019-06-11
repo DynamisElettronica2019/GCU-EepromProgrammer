@@ -90,6 +90,14 @@ public class GuiController implements Initializable {
 			public void run() {
 				StringBuilder sb = new StringBuilder();
 				sb.append(sendEepromState(Short.parseShort(eepromStateField.getText())));
+				sb.append(0);
+				sb.append(getUpperChar(Short.parseShort(eepromLastComField.getText())));
+				sb.append(getLowerChar(Short.parseShort(eepromLastComField.getText())));
+				sb.append(getUpperChar(Short.parseShort(eepromReadCounterField.getText())));
+				sb.append(getLowerChar(Short.parseShort(eepromReadCounterField.getText())));
+				sb.append(0);
+				sb.append(getUpperChar(Short.parseShort(eepromWriteCounterField.getText())));
+				sb.append(getLowerChar(Short.parseShort(eepromWriteCounterField.getText())));
 				ParsedPage0 parsed = new ParsedPage0('0');
 				parsed.splitString(sb.toString());
 				view.getCommandSender().setNewDataPage0(parsed);

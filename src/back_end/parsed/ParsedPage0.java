@@ -26,6 +26,7 @@ public class ParsedPage0 extends Parsed {
 		parsed.add(string.substring(Channels.EEPROM_WRITE_COUNTER_START, Channels.EEPROM_WRITE_COUNTER_END + 1));
 		parsedName.add(Channels.EEPROM_WRITE_COUNTER_NAME);
 		parsedMap.put(Channels.EEPROM_WRITE_COUNTER_NAME, 3);
+		
 	}
 
 }

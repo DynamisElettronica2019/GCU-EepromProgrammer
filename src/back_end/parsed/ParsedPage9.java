@@ -27,7 +27,7 @@ public class ParsedPage9 extends Parsed {
 		parsedMap.put(Channels.TPS_START_AU_LIMIT_NAME, 3);
 		parsed.add(string.substring(Channels.END_GEAR_AU_START, Channels.END_GEAR_AU_END + 1));
 		parsedName.add(Channels.END_GEAR_AU_NAME);
-		parsedMap.put(Channels.END_GEAR_AU_NAME, 3);
+		parsedMap.put(Channels.END_GEAR_AU_NAME, 4);
 	}
 
 }

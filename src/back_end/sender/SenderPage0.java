@@ -31,7 +31,7 @@ public class SenderPage0 extends Sender {
 			}
 		}
 		while(strToSend.toString().length() < Channels.STRING_SIZE) {
-			strToSend.append(0);
+			strToSend.append((char) 0);
 		}
 		receiver.send(strToSend.toString());
 	}

@@ -15,7 +15,7 @@ public class SenderPage9 extends Sender {
 
 	@Override
 	public void Send(DataElem element) {
-		ArrayList<String> strings = element.GetPageStrings(Channels.PAGE9_INDEX_START - Channels.PAGE9_INDEX_START, Channels.PAGE9_INDEX_END - Channels.PAGE9_INDEX_START + 1);
+		ArrayList<String> strings = element.GetPageStrings(Channels.PAGE9_INDEX_START - Channels.PAGE8_INDEX_START, Channels.PAGE9_INDEX_END - Channels.PAGE8_INDEX_START + 1);
 		StringBuilder strToSend = new StringBuilder();
 		strToSend.append(Channels.WRITE_ID);
 		strToSend.append(Channels.PAGE_9_ID);
